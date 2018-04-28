@@ -79,5 +79,5 @@ theme: yinwang
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repositiry: git@github.com:purplewe/purplewe.github.io.git
+  repo: git@github.com:purplewe/purplewe.github.io.git
   branch: master
