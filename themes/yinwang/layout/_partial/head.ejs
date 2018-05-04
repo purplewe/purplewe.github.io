@@ -16,16 +16,19 @@
         <%- css('css/bootstrap.min.css')%>
         <%- css('css/bootstrap-theme.min.css')%>
     <%} else {%>
-	   <link href="<%- url_for(theme.css) %>/main.css?v=<%- theme.version %>" rel="stylesheet" type="text/css" />
-    
+
         <%- js('js/util.js') %>
-        <script>
+        <link href="<%- url_for(theme.css) %>/main.css?v=<%- theme.version %>" rel="stylesheet" type="text/css" />
+
+        <!---<script>
             if(isMobile()) {
-                loadjscssfile('../css/mobile.css', 'css');
+                console.log("mobile")
+                loadjscssfile('../../../../css/mobile.css', 'css');
             } else {
-                loadjscssfile('../css/desktop.css', 'css');
+                console.log("desktop")
+                loadjscssfile('../../../../css/desktop.css', 'css');
             }
-        </script> 
+        </script>---> 
     <%}%>
 
     <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">

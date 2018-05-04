@@ -4,11 +4,18 @@ body {
   padding: 2% 5% 5% 5%;
   line-height: 150%;
   border: 1px solid LightGrey; 
-  margin: 5% auto;//desktop version
-  width: 80%; // desktop version
+  margin: 5% auto;
 }
 
-H1 {
+@media (min-width: 768px)
+  body
+    width: 50%
+  
+@media (max-width: 768px)
+  body
+    width: 80%;
+
+H1 { 
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, Helvetica, STKaiti, SimSun, serif;
 }
 
