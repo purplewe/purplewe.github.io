@@ -1,0 +1,14 @@
+<% if (post && index){ %>
+<li class="list-group-item title">
+    <a href="<%- url_for(post.path)%>"><%= post.title%></a>
+</li>
+<% } else { %>
+
+<h2 class="title"><%= post.title %></h2>
+<h4 class="author">by&nbsp;&nbsp;<%= post.author %></h4>
+
+<script></script>
+<%- toc(post.content, {"list_number":false}) %>
+<%- post.content %>
+
+<% } %>

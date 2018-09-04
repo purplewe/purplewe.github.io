@@ -1,0 +1,32 @@
+<head>
+	<%
+	var title = page.title;
+	if(is_home()) {
+		title = config.title
+	}
+	%>
+	<title><% if (title){ %><%= title %><% } %></title>
+	<meta name="keywords" content="<%- theme.keywords%>" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <%if(is_home()) { %>
+        <link href="<%- url_for(theme.css) %>/home.css?v=<%- theme.version %>" rel="stylesheet" type="text/css" />
+        <%- css('css/bootstrap.min.css')%>
+        <%- css('css/bootstrap-theme.min.css')%>
+    <%} else {%>
+        <%- js('js/util.js') %>
+        <link href="<%- url_for(theme.css) %>/main.css?v=<%- theme.version %>" rel="stylesheet" type="text/css" />
+        <!---<script>
+            if(isMobile()) {
+                console.log("mobile")
+                loadjscssfile('../../../../css/mobile.css', 'css');
+            } else {
+                console.log("desktop")
+                loadjscssfile('../../../../css/desktop.css', 'css');
+            }
+        </script>---> 
+    <%}%>
+
+</head>
