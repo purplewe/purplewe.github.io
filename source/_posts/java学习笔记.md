@@ -1,6 +1,6 @@
 ---
 title: java学习笔记
-author: peng
+author: 0x17
 date: 2018-07-24 17:04:53
 tags:
 ---
@@ -104,6 +104,8 @@ public class Singleton{
 ### 多线程编程
 
 ### tomcat与apache与nginx的区别
+
+apache服务器和nginx服务器都是
 
 ### java中的内存管理
 

@@ -1,6 +1,6 @@
 ---
 title: vsftpd的使用
-author: peng
+author: 0x17
 date: 2018-08-03 19:10:00
 tag:
 ---
