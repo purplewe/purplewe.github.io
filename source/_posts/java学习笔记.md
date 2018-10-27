@@ -198,6 +198,18 @@ public String(String original) {
     }
 ```
 
+
+### String StringBuilder StringBuffer
+
+String如上第一种声明的为字符串常量，所以随后对字符串的操作就是不断地创建与销毁对象。
+StringBuilder和StringBuffer为字符串变量，可以直接更改指向的内容。在线程安全上，StringBuilder是线程不安全的，StringBuffer是线程安全的，可以看到StringBuffer中的很多方法都是带有synchronized关键字的。
+
+String:适用于少量的字符串操作。
+
+StringBuilder:适用于单线程下在字符缓冲区进行大量操作的情况。
+
+StringBuffer:适用于多线程下在字符缓冲区进行大量操作的情况（线程安全）。
+
 #### 垃圾回收机制
 
 ### java注解
@@ -205,14 +217,6 @@ public String(String original) {
 #### 元注解
 
 元注解也是注解，它是用来给自定义注解标识的信息的。
-
-### String StringBuilder StringBuffer
-
-String:适用于少量的字符串操作。
-
-StringBuilder:适用于单线程下在字符缓冲区进行大量操作的情况。
-
-StringBuffer:适用于多线程下在字符缓冲区进行大量操作的情况（线程安全）。
 
 ### Java泛型（generic）
 
@@ -310,5 +314,9 @@ public class Generic {
 （有些不大明白）
 
 异常类不能是泛型，因为异常类是泛型的话，那么catch中的也是泛型，但这是运行时才知道的。
+
+**为什么不能定义泛型数组**
+
+
 
 
