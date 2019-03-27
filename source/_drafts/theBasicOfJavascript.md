@@ -45,7 +45,32 @@ console.log(fathername); //chris
 console.log(name);
 
 变量值互换
+var a = 1,
+    b = 2;
 
+var [b, a] = [a, b];
+console.log(a + ' ' + b);
 
 字符串解构
+var str = 'hello';
+var [a, b, c, d, e] = str;
+console.log(a + ' '  + b);//a b
+``` 
+
+拓展运算符：把数组或对象展开成由逗号隔开的值
+
 ```
+深拷贝
+var a = [1, 2];
+var b = a;
+var c = [...a];
+console.log(a === b);//true
+console.log(a === c);//false
+
+字符串转数组
+var str = 'hello';
+var exstr = [...str];
+console.log(exstr);//['h', 'e', 'l', 'l', 'o']
+```
+
+rest运算符：作用与拓展运算符相反
