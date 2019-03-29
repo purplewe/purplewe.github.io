@@ -164,3 +164,85 @@ function f(obj){
     })
 }
 ```
+
+### 变量的解构赋值
+
+实际上可以看作一种模式匹配。
+
+#### 数组的解构赋值
+
+```
+let [foo] = [];
+let [bar, foo] = [1];
+foo // undefined
+解构不成功就会返回undefined。
+
+let [x, y] = [1, 2, 3];
+不完全解构。
+
+let [foo] = 1;
+let [foo] = false;
+let [foo] = NaN;
+let [foo] = undefined;
+let [foo] = null;
+let [foo] = {};
+会报错，因为等号右边是不可便利的结构。
+
+let [x, y = 'b'] = ['a', undefined];
+// x='a', y='b' 只有对应的位置严格等于(===)undefined，默认值才会生效。
+```
+
+#### 对象的解构赋值
+
+```
+let {foo, bar} = {foo: "aaa", bar: "bbb"};
+let {foo: foo, bar: bar} = {foo: "aaa", bar: "bbb"};
+let {foo: baz} = {foo: "aaa", bar: "bbb"} // baz->"aaa" foo->报错
+let {foo} = {bar: "bbb'} //解构失败 foo->undefined
+解构赋值的键其实是匹配的模式，而值才是指向真正的值。
+
+var {x = 3} = {x: undefined};
+x // 3
+var {x = 3} = {x: null};
+x // null
+默认值的生效条件是对应匹配的值为undefined。
+
+let arr = [1, 2, 3];
+let {0: first, [arr.length - 1]: last} = arr;
+first // 1
+last // 3
+数组可以进行对象属性的结构，**数组本质是特殊的对象**
+```
+
+#### 字符串的解构赋值
+
+```
+let {length: len} = 'hello';
+len //5
+String类中有个length属性与之匹配。
+```
+#### 数值和布尔值的解构赋值
+
+#### 函数参数的解构赋值
+
+```
+function f({x = 0, y = 0} = {}) {
+    return [x, y];
+}
+f({x: 3, y: 3}); // [3, 8]
+f({x: 3}); // [3, 0]
+f({}); // [0, 0]
+f(); // [0, 0]
+
+function f({x, y} = {x: 0, y: 0}) {
+    return [x, y];
+}
+f({x: 3, y: 3}); // [3, 8]
+f({x: 3}); // [3, undefined]
+f({}); // [undefined, undefined]
+f(); // [0, 0]
+注意上面两种情况的比较。
+
+[1, undefined, 3].map((x = 'yes') => x);
+// [1, 'yes', 3]
+```
