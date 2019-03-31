@@ -223,6 +223,19 @@ String类中有个length属性与之匹配。
 ```
 #### 数值和布尔值的解构赋值
 
+```
+let {toString: s} = 123;
+s === Number.prototype.toString // true
+
+let {toString: s} = true;
+s === Boolean.prototype.toString // true
+如果等号右边是数值或者布尔值，则会转为包装对象
+
+let { prop: x } = undefined; // TypeError
+let { prop: y } = null; // TypeError
+undefined和null无法转为对象。
+```
+
 #### 函数参数的解构赋值
 
 ```
@@ -246,3 +259,6 @@ f(); // [0, 0]
 [1, undefined, 3].map((x = 'yes') => x);
 // [1, 'yes', 3]
 ```
+### 函数的扩展
+
+
