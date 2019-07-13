@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "purplewe.github.io_15e2632e"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - BST",
+            "request": "launch",
+            "mainClass": "BST"
+        }
+    ]
+}

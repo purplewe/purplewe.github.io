@@ -17,7 +17,7 @@ public boolean equals(Object obj) {
 
 ### hascode()
 
-hasCode()方法的作用的获取哈希码，也称为散列码；它实际上是一个int整数。哈希码的作用是确定该对象在哈希表中的索引位置。hashCode()方法定义在Object中，这也就意味着Java中所有对象都有hashCode()这个方法，自定义对象默认的hashCode是根据地址计算的。
+hasCode()方法的作用的获取哈希码，也称为散列码；它实际上是一个int整数。哈希码的作用是确定该对象在哈希表中的索引位置。hashCode()方法定义在Object中，这也就意味着Java中所有对象都有hashCode()这个方法，自定义对象默认的hashCode是根据地址计算的(This is typically implemented by converting the internal address of the object into an integer)。
 
 #### 散列表
 
@@ -43,7 +43,7 @@ key与散列表下标index的映射关系，但是key一般是很多的，有可
 
 小范围负整数进行偏移
 
-大整数取模（模一个素数），不过还是需要具体问题具体分析
+大整数取模（模一个素数是为了使结果分布均匀），不过还是需要具体问题具体分析
 
 2.浮点型
 
@@ -53,6 +53,6 @@ key与散列表下标index的映射关系，但是key一般是很多的，有可
 
 也转换为整型（进制转换）
 
-4.符合类型（自定义对象、日期类型等）
+4.复合类型（自定义对象、日期类型等）
 
 ##### 如何解决哈希冲突
