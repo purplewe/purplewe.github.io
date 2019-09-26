@@ -20,6 +20,11 @@ menu:
   About: /about
   GitHub: https://github.com/purplewe
 
+icon:
+  Home: "#iconhome"
+  About: "#iconsuperhero-"
+  GitHub: "#iconGitHub"
+
 
 
 # Static files

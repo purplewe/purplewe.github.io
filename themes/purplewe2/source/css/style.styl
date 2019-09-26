@@ -17,11 +17,11 @@ $grey-color-dark = darken($grey-color, 25%);
 $on-palm = 600px;
 $on-laptop = 800px;
 //quote
-$content-font = 'Roboto', sans-serif;
+$other-font = 'Roboto', sans-serif;
 //blog title
 $title-font = 'Permanent Marker', cursive;
-//main content
-$other-font = 'Lato', sans-serif;
+//main font
+$content-font = "Noto Serif SC";
 /**
  *
  * 消除浏览器样式
@@ -39,7 +39,7 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, 
 }
 
 p {
-  font-family: $content-font;
+  font-family: $other-font;
 }
 
 table {
@@ -62,11 +62,6 @@ ol, ul {
 
 caption, th {
   text-align: left;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-size: 100%;
-  font-weight: normal;
 }
 
 q:before, q:after {
@@ -124,4 +119,5 @@ body {
 
 @import '_partial/header';
 @import '_partial/post';
-@import '_partial/paginator'
+@import '_partial/paginator';
+@import '_partial/article';

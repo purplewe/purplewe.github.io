@@ -1,0 +1,169 @@
+article {
+    font-weight: 200;
+    font-family: $content-font;
+    color: #3a3a3a;
+    h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol, dl, figure, .highlight {
+        margin-bottom: 15px;
+    }
+    p {
+        text-indent: 2em;
+        text-align: justify !important
+        font-family: $content-font;
+    }
+    .post-title{
+        .title {
+            font-size: 2em;
+            font-weight: 300;
+        }
+    }
+    .post-meta {
+        font-size: 1em;
+        color: #828282;
+        margin-bottom: 20px;
+    }
+    .post-content {
+        .highlight {
+        background: #f7f7f7;
+        margin: 20px 0;
+        padding: 15px;
+        overflow: auto;
+        font-size: $code-font-size;
+        line-height: $line-height-code-block;
+        .gutter {
+            width: 30px;
+        }
+        pre {
+            color: #666;
+        }
+        pre, code {
+            font-family: "Input Mono", "PT Mono", Consolas, Monaco, Menlo, monospace;
+        }
+        code {
+            word-break: break-all;
+            background: $gainsboro;
+            text-shadow: 0 1px #fff;
+            padding: 0 0.3em;
+        }
+        pre code {
+            background: none;
+            text-shadow: none;
+            padding: 0;
+        }
+        pre {
+        border: none;
+        margin: 0;
+        padding: 1px;
+        }
+        table {
+        margin: 0;
+        width: auto;
+        border: none;
+        }
+        td {
+        border: none;
+        padding: 0;
+        }
+        figcaption {
+        font-size: 0.85em;
+        color: #8e908c;
+        line-height: 1em;
+        margin-bottom: 1em;
+        }
+        figcaption a {
+        float: right;
+        }
+        .gutter pre {
+        text-align: right;
+        padding-right: 20px;
+        }
+        .line {
+        height: 20px;
+        }
+        pre .comment {
+        color: #8e908c;
+        }
+        pre .variable,
+        pre .attribute,
+        pre .tag,
+        pre .regexp,
+        pre .ruby .constant,
+        pre .xml .tag .title,
+        pre .xml .pi,
+        pre .xml .doctype,
+        pre .html .doctype,
+        pre .css .id,
+        pre .css .class,
+        pre .css .pseudo {
+        color: #c82829;
+        }
+        pre .number,
+        pre .preprocessor,
+        pre .built_in,
+        pre .literal,
+        pre .params,
+        pre .constant,
+        pre .command {
+        color: #f5871f;
+        }
+        pre .ruby .class .title,
+        pre .css .rules .attribute {
+        color: #718c00;
+        }
+        pre .string,
+        pre .value,
+        pre .inheritance,
+        pre .header,
+        pre .ruby .symbol,
+        pre .xml .cdata,
+        pre .special,
+        pre .number,
+        pre .formula {
+        color: #718c00;
+        }
+        pre .title,
+        pre .css .hexcolor {
+        color: #3e999f;
+        }
+        pre .function,
+        pre .python .decorator,
+        pre .python .title,
+        pre .ruby .function .title,
+        pre .ruby .title .keyword,
+        pre .perl .sub,
+        pre .javascript .title,
+        pre .coffeescript .title {
+        color: #4271ae;
+        }
+        pre .keyword,
+        pre .javascript .function {
+        color: #8959a8;
+        }
+        }
+        a {
+            text-decoration: none;
+            cursor: crosshair;
+            border-bottom: 1px dashed Red;
+            color: #00f;
+        }
+        p {
+            font-size: 1em;
+            color: #666;
+        }
+        h3, h4, h5, h6{
+            font-weight: 300;
+            color: black;
+        }
+        h3 {
+            font-size: 1.5em;
+        }
+        h4 {
+            font-size: 1.3em;
+        }
+        h5 {
+            font-size: 1.1em;
+        }
+        .headerlink {
+            width: 10px;    
+        }
+    }
+}
