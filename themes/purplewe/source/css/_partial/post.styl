@@ -1,0 +1,50 @@
+.saySomething{
+  margin-bottom: 2em;
+}
+
+.post {
+  margin: 1em auto;
+  display: flex;
+  flex-direction: row;
+  margin-left: 30px;
+  font-weight: 500;
+}
+
+.main>.post {
+  flex-direction: column;
+}
+
+@media screen and (max-width: $on-palm){
+  .post{
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+.posts {
+
+  font-size: 1em;
+  font-weight: bolder;
+  //display: block;
+
+  .post:first-chid {
+    margin-top: 0
+  }
+
+  .post-title {
+    font-size: 1em;
+
+    .post-title-link{
+      color: #71289e;
+      text-decoration: none;
+    }
+  }
+
+  .post-meta {
+    color: #BABABA
+  }
+
+  .post-content p {
+    text-align: justify !important
+  } 
+}

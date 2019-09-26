@@ -1,0 +1,124 @@
+/**
+ *
+ * 头部样式
+ *
+* */
+.header-wrapper{
+    
+  border-top: 5px solid #008080;
+  border-bottom: 1px solid #e8e8e8;
+  min-height: 56px;
+
+  .header {
+
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+
+    max-width: calc(800px - (30px * 2));
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    .blog-title .logo {
+      color: #71289e;
+      font-size: 2em;
+      font-family: $title-font;
+      text-decoration: none;
+    }
+
+  }
+}
+
+/**
+ *
+ * 菜单样式
+ *
+* */
+.site-nav {
+    float: right;
+    line-height: 56px;
+    
+    .menu-icon {
+        display: none;
+    }
+
+    .iconfont {
+        display: none;
+    }
+
+    .page-link {
+        color: #71289e;
+        line-height: $base-line-height;
+
+        // Gaps between nav items, but not on the first one
+        &:not(:first-child) {
+            margin-left: 20px;
+        }
+    }
+
+    .page-link:hover {
+        color: #008080;
+    }
+
+    .trigger {
+        display: flex;    
+    }
+
+    @media screen and (max-width: $on-palm) {
+        position: absolute;
+        top: 9px;
+        right: 30px;
+        background-color: $background-color;
+        border: 1px solid $grey-color-light;
+        border-radius: 5px;
+        text-align: right;
+
+        .menu-icon {
+            display: block;
+            float: right;
+            width: 36px;
+            height: 26px;
+            line-height: 0;
+            padding-top: 10px;
+            text-align: center;
+
+            > svg {
+                width: 18px;
+                height: 15px;
+
+                path {
+                    fill: $grey-color-dark;
+                }
+            }
+        }
+
+        .trigger {
+            clear: both;
+            display: none;
+        }
+
+        &:hover .trigger {
+            display: block;
+            position: relative; 
+        }
+
+        .menu-item {
+            display: flex; 
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .page-link {
+            display: inline;
+        }
+
+        .iconfont {
+            display: inline;
+            font-family: "iconfont" !important;
+            font-size: 1.5em;
+            font-style: normal;
+        }
+    }
+}

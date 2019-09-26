@@ -11,7 +11,7 @@ tags:
 ```
 byte(1byte),short(2bytes),int(4bytes),long(8bytes)
 float(4bytes),double(8bytes)
-char(2bytes)
+char(2bytes)<!-- more -->
 boolean(暂未确定，依赖Java虚拟机具体实现)
 ```
 [参考](https://www.jianshu.com/p/2f663dc820d0))
