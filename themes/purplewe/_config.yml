@@ -13,12 +13,17 @@ highlight_theme: normal
 
 
 menu:
-  Blog: /
+  Home: /
   #categories: /categories
   #archives: /archives
   #tags: /tags
   About: /about
   GitHub: https://github.com/purplewe
+
+icon:
+  Home: "#iconhome"
+  About: "#iconsuperhero-"
+  GitHub: "#iconGitHub"
 
 
 

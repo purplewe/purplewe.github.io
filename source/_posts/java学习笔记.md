@@ -1,5 +1,5 @@
 ---
-title: java学习笔记
+title: Java 学习笔记
 author: "0x17"
 date: 2018-07-24 17:04:53
 tags:
@@ -14,7 +14,7 @@ float(4bytes),double(8bytes)
 char(2bytes)
 boolean(暂未确定，依赖Java虚拟机具体实现)
 ```
-[参考](https://www.jianshu.com/p/2f663dc820d0))
+[参考](https://www.jianshu.com/p/2f663dc820d0)
 
 #### 什么是包装类
 
@@ -33,7 +33,7 @@ boolean(暂未确定，依赖Java虚拟机具体实现)
 #### 使用
 
 自动装箱：基本类型转包装类，自动装箱过程调用 valueOf() 方法,valueOf()查看该值是否存在缓存中
-```
+```java
 public static Integer valueOf(int i) {
         if (i >= IntegerCache.low && i <= IntegerCache.high)
             return IntegerCache.cache[i + (-IntegerCache.low)];
@@ -43,7 +43,9 @@ public static Integer valueOf(int i) {
 Integer i = 10;
 
 自动拆箱：包装类转基本类型
+
 Integer i = 10;
+
 int a = i;
 
 #### 注意

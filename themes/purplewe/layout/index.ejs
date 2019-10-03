@@ -1,1 +1,16 @@
-<%- partial('_partial/archive', {pagination: 2, index: true}) %>
+<p class="saySomething">Welcome, I am purplewe, an open source enthusiast.</p>
+<ul class="posts">My Blog:
+    <% page.posts.each(function (post) { %>
+        <li class="post">
+            <div class="post-meta">
+                <span class="post-time"><%- date(post.date, "YYYY-MM-DD") %></span>
+            </div>&nbsp;&nbsp;»&nbsp;&nbsp;
+            <div class="post-title">
+                <a class="post-title-link" href="<%- url_for(post.path) %>">
+                    <%= post.title %>
+                </a>
+            </div>
+        </li>
+        <% }) %>
+</ul>
+<%- partial('_partial/paginator') %>
