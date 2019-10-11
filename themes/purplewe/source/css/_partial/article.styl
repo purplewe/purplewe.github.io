@@ -32,55 +32,33 @@ article {
         .gutter {
             width: 30px;
         }
-        pre {
-            color: #666;
-        }
-        pre, code {
-            font-family: "Input Mono", "PT Mono", Consolas, Monaco, Menlo, monospace;
-        }
-        code {
-            word-break: break-all;
-            background: $gainsboro;
-            text-shadow: 0 1px #fff;
-            padding: 0 0.3em;
-        }
-        pre code {
-            background: none;
-            text-shadow: none;
-            padding: 0;
-        }
-        pre {
-        border: none;
-        margin: 0;
-        padding: 1px;
-        }
         table {
-        margin: 0;
-        width: auto;
-        border: none;
+            margin: 0;
+            width: auto;
+            border: none;
         }
         td {
-        border: none;
-        padding: 0;
+            border: none;
+            padding: 0;
         }
         figcaption {
-        font-size: 0.85em;
-        color: #8e908c;
-        line-height: 1em;
-        margin-bottom: 1em;
+            font-size: 0.85em;
+            color: #8e908c;
+            line-height: 1em;
+            margin-bottom: 1em;
         }
         figcaption a {
-        float: right;
+            float: right;
         }
         .gutter pre {
-        text-align: right;
-        padding-right: 20px;
+            text-align: right;
+            padding-right: 20px;
         }
         .line {
-        height: 20px;
+            height: 20px;
         }
         pre .comment {
-        color: #8e908c;
+            color: #8e908c;
         }
         pre .variable,
         pre .attribute,
@@ -164,6 +142,25 @@ article {
         }
         .headerlink {
             width: 10px;    
+        }
+        > table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            thead {
+                th {
+                    padding: 6px 13px;
+                    border: 1px solid #dfe2e5;
+                }
+            }
+            tbody {
+                td {
+                    padding: 6px 13px;
+                    border: 1px solid #dfe2e5;
+                } 
+            }
+            tr:nth-child(2n) {
+                background-color: #f6f8fa;
+            }
         }
     }
 }
