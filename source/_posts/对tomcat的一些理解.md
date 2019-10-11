@@ -18,4 +18,13 @@ call "%EXECUTABLE%" start %CMD_LINE_ARGS%
 
 ```
 
-#### startup.bat
+### 顶层架构
+
+![Please Wait](Architecture.png)
+
+tomcat的顶层架构如上图所示，可以看到有server、service、connerctor、container四个组件，那么这四个组件又有什么作用呢？
+
+server：是最外层的组件，代表
+
+
+
