@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>
+        purplewe
+    </title>
+    <link href="https://fonts.font.im/css?family=Permanent+Marker|Roboto:500i|Lato:400" rel="stylesheet">
+    <link href="https://fonts.loli.net/css?family=Noto+Serif+SC:400" rel="stylesheet">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/icon/iconfont.css">
+        <script src="/icon/iconfont.js"></script>
+</head>
+  <body>
+    <div class="header-wrapper">
+    <header class="header">
+        <div class="blog-title">
+            <a href="/" class="logo">
+                purplewe
+            </a>
+        </div>
+        <div class="site-nav">
+            <a href="#" class="menu-icon">
+                <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+            </a>
+            <div class="trigger">
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconhome"></use>
+                    </svg>
+                    <a class="page-link" href="/" class="menu-item-link">
+                        Home
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconsuperhero-"></use>
+                    </svg>
+                    <a class="page-link" href="/about" class="menu-item-link">
+                        About
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconGitHub"></use>
+                    </svg>
+                    <a class="page-link" href="https://github.com/purplewe" class="menu-item-link">
+                        GitHub
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </header>
+</div>
+    <main class="main">
+      <article class="post">
+    <div class="post-title">
+        <h2 class="title">Java 学习笔记</h2>
+    </div>
+    <div class="post-meta">
+        <span class="post-time">2018-07-24</span>
+    </div>
+    <div class="post-content">
+        <h3 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h3><p>首先了解java中的八种基本类型：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">byte(1byte),short(2bytes),int(4bytes),long(8bytes)</span><br><span class="line">float(4bytes),double(8bytes)</span><br><span class="line">char(2bytes)</span><br><span class="line">boolean(暂未确定，依赖Java虚拟机具体实现)</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://www.jianshu.com/p/2f663dc820d0" target="_blank" rel="noopener">参考</a></p>
+<h4 id="什么是包装类"><a href="#什么是包装类" class="headerlink" title="什么是包装类"></a>什么是包装类</h4><p>为了将基本类型封装面向对象，设计类时将八种基本类型设计了对应的类，这样的类称为包装类，位于java.lang包中。</p>
+<h4 id="包装类的作用"><a href="#包装类的作用" class="headerlink" title="包装类的作用"></a>包装类的作用</h4><p>1.有时候方法需要传递一个Object参数，这是就可以使用包装类。</p>
+<p>2.集合不允许存放基本类型数据。</p>
+<p>3.包装类中封装了一些方法和常量，比如类型最大值，类型转换方法。</p>
+<p>4.String可以和基本类型互相转换。</p>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>自动装箱：基本类型转包装类，自动装箱过程调用 valueOf() 方法,valueOf()查看该值是否存在缓存中<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">valueOf</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)</span><br><span class="line">            <span class="keyword">return</span> IntegerCache.cache[i + (-IntegerCache.low)];</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Integer(i);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>Integer i = 10;</p>
+<p>自动拆箱：包装类转基本类型</p>
+<p>Integer i = 10;</p>
+<p>int a = i;</p>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>包装类中除了Float与Double，都有缓存值，如果在缓存值的范围内，直接引用缓存值（-128-127）。<a href="https://blog.csdn.net/qq_29119581/article/details/78327759" target="_blank" rel="noopener">参考</a></p>
+<h3 id="Singleton"><a href="#Singleton" class="headerlink" title="Singleton"></a>Singleton</h3><h4 id="为什么要使用单例模式"><a href="#为什么要使用单例模式" class="headerlink" title="为什么要使用单例模式"></a>为什么要使用单例模式</h4><p>1.控制资源的使用，通过线程同步来控制资源的并发访问；</p>
+<p>2.控制实例产生的数量，达到节约资源的目的。</p>
+<p>3.作为通信媒介使用，也就是数据共享，它可以在不建立直接关联的条件下，让多个不相关的两个线程或者进程之间实现通信。</p>
+<p><a href="https://www.cnblogs.com/andy-zhou/p/5363585.html" target="_blank" rel="noopener">参考</a></p>
+<h4 id="饿汉模式"><a href="#饿汉模式" class="headerlink" title="饿汉模式"></a>饿汉模式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton&#123;</span><br><span class="line">    private static Singleton singleton = new Singleton();</span><br><span class="line">    private Singleton()&#123;&#125;</span><br><span class="line">    public static Singleton getSingleton()&#123;</span><br><span class="line">        return singleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>特点：简单安全，但是无法达到延迟加载</p>
+<h4 id="懒汉模式"><a href="#懒汉模式" class="headerlink" title="懒汉模式"></a>懒汉模式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton&#123;</span><br><span class="line">    private static Singleton singleton = null;</span><br><span class="line">    private Singleton()&#123;&#125;</span><br><span class="line">    public static Singleton getSingleton()&#123;</span><br><span class="line">        if(singleton == null) singleton = new Singleton();</span><br><span class="line">        return singleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>特点：可以延迟加载但是线程不安全，会导致创建多个实例</p>
+<p><a href="https://www.cnblogs.com/andy-zhou/p/5363585.html" target="_blank" rel="noopener">其他优化模式</a></p>
+<h3 id="java中的封装、继承、多态与组合"><a href="#java中的封装、继承、多态与组合" class="headerlink" title="java中的封装、继承、多态与组合"></a>java中的封装、继承、多态与组合</h3><p>封装：将类中的属性定义为私有的，然后对象通过类中暴露公有的方法来对数据进行操作，这样我们通过自定义公有方法来控制数据的方法方式。</p>
+<p>继承：子类继承超类的属性和方法，还可以对超类进行拓展。</p>
+<p>多态：比如说一个接口可以有不同的实现，一个标准有不同的实现。</p>
+<p>组合：所以总结来说，“is-a ”（是一个）的关系是用继承来表达的，而“has-a”（有一个）的关系则是用组合来表达的。比如说汽车属于一种交通工具，这是一种继承关系，而汽车拥有发动机，门窗等零部件，这是组合的关系。</p>
+<h3 id="java抽象类和接口"><a href="#java抽象类和接口" class="headerlink" title="java抽象类和接口"></a>java抽象类和接口</h3><p>只要类中有抽象方法那么这个类就是抽象类，或者直接被修饰为abstract。</p>
+<p>接口算是一个特殊的抽象类，其中所有的变量都为静态常量，所有方法都为静态方法，且没有静态方法。</p>
+<p>一个类如果继承抽象类，那么必须得实现抽象类中所有的抽象方法，否则它也是一个抽象类。</p>
+<p>一个类可以实现多个接口。</p>
+<h3 id="Java内部类，内部私有类的作用"><a href="#Java内部类，内部私有类的作用" class="headerlink" title="Java内部类，内部私有类的作用"></a>Java内部类，内部私有类的作用</h3><h3 id="java合集"><a href="#java合集" class="headerlink" title="java合集"></a>java合集</h3><h4 id="搞清楚其中类和接口的关系关系"><a href="#搞清楚其中类和接口的关系关系" class="headerlink" title="搞清楚其中类和接口的关系关系"></a>搞清楚其中类和接口的关系关系</h4><p><img src="/2018/07/24/java学习笔记/2018_9_6.gif" alt="Please Wait"></p>
+<h4 id="Iterator与Iterable"><a href="#Iterator与Iterable" class="headerlink" title="Iterator与Iterable"></a>Iterator与Iterable</h4><p>Iterator与Iterable都是接口，从字面上可以分别理解为迭代器和可迭代的。</p>
+<p>Iterator中有hasNext(), next(), remove(), forEachRemaining()等方法。</p>
+<p>Iterable中有一个iterator方法，用来返回一个iterator，也就是返回一个迭代器</p>
+<h3 id="comparable与comparator"><a href="#comparable与comparator" class="headerlink" title="comparable与comparator"></a>comparable与comparator</h3><h3 id="序列化与反序列化"><a href="#序列化与反序列化" class="headerlink" title="序列化与反序列化"></a>序列化与反序列化</h3><p>序列化：把对象转换为字节序列的过程称为对象的序列化</p>
+<p>反序列化：把字节序列恢复为对象的过程称为对象的反序列化</p>
+<p>作用：</p>
+<p>1.把对象的字节序列永久地保存到硬盘上，通常存放在一个文件中　</p>
+<p>如：在很多应用中，需要对某些对象进行序列化，让它们离开内存空间，入住物理硬盘，以便长期保存。比如最常见的是Web服务器中的Session对象，当有 10万用户并发访问，就有可能出现10万个Session对象，内存可能吃不消，于是Web容器就会把一些seesion先序列化到硬盘中，等要用了，再把保存在硬盘中的对象还原到内存中。</p>
+<p>2.在网络上传送对象的字节序列</p>
+<p>如：当两个进程在进行远程通信时，彼此可以发送各种类型的数据。无论是何种类型的数据，都会以二进制序列的形式在网络上传送。发送方需要把这个Java对象转换为字节序列，才能在网络上传送；接收方则需要把字节序列再恢复为Java对象。</p>
+<h3 id="面向接口编程"><a href="#面向接口编程" class="headerlink" title="面向接口编程"></a>面向接口编程</h3><h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><h3 id="io中各种类的关系与作用"><a href="#io中各种类的关系与作用" class="headerlink" title="io中各种类的关系与作用"></a>io中各种类的关系与作用</h3><h3 id="多线程编程"><a href="#多线程编程" class="headerlink" title="多线程编程"></a>多线程编程</h3><h3 id="tomcat与apache与nginx的区别"><a href="#tomcat与apache与nginx的区别" class="headerlink" title="tomcat与apache与nginx的区别"></a>tomcat与apache与nginx的区别</h3><p>Apache HTTP服务器和Nginx服务器都是http服务器，用来存放静态资源，比如说image,css,html等文件，有一些编程语言中的类库也都可以实现一个简单的http服务器，比如说java或者node。Tomcat服务器除了以上功能还可以发送动态资源，比如说通过Java Server Pages技术可以添加Java语句，jsp本质上就是一个servlet，Tomcat是一个能够运行servlet的容器，管理servlet的生命周期、将url映射到servlet进行处理等。</p>
+<p>Nginx除此之外还是一款优秀的反向代理服务器</p>
+<h4 id="反向代理与负载均衡"><a href="#反向代理与负载均衡" class="headerlink" title="反向代理与负载均衡"></a>反向代理与负载均衡</h4><p><a href="https://www.zhihu.com/question/24723688/answer/128105528" target="_blank" rel="noopener">反向代理</a>：</p>
+<p><strong>正向代理</strong>代理的是客户端，隐藏了客户端的信息</p>
+<p><strong>反向代理</strong>代理的是服务器，隐藏了服务器的信息</p>
+<p><a href="https://zhuanlan.zhihu.com/p/32841479" target="_blank" rel="noopener">负载均衡</a>:</p>
+<p>将工作分布到多个服务器（能处理相同的请求）来提高应用的性能和可靠性，代理服务器能通过高效的算法将请求转发到性能良好的服务器中进行处理。</p>
+<h3 id="java中的内存管理"><a href="#java中的内存管理" class="headerlink" title="java中的内存管理"></a>java中的内存管理</h3><p>java中的内存区域大致可分为CPU寄存器、栈、堆、静态域、常量池等。</p>
+<h4 id="字符串的两种创建方式"><a href="#字符串的两种创建方式" class="headerlink" title="字符串的两种创建方式"></a>字符串的两种创建方式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//第一种创建方式</span><br><span class="line">String s1 = &quot;hello&quot;;</span><br><span class="line">String s2 = &quot;hello&quot;;</span><br><span class="line">String s3 = &quot;world&quot;;</span><br><span class="line">//第二种创建方式</span><br><span class="line">String str1 = new String(&quot;hello&quot;);</span><br><span class="line">String str2 = new String(&quot;hello&quot;);</span><br><span class="line"></span><br><span class="line">System.out.println(&quot;s1==s2:&quot;+(s1==s2));//true</span><br><span class="line">System.out.println(&quot;s1==str1:&quot;+(s1==str1));//false</span><br><span class="line">System.out.println(&quot;str1==str2:&quot;+(str1==str2));//false</span><br><span class="line"></span><br><span class="line">String s4 = &quot;hello&quot;+&quot; &quot;+&quot;world&quot;;</span><br><span class="line">String s5 = s2+&quot; &quot;+s3;</span><br><span class="line">String s6 = &quot;hello world&quot;;</span><br><span class="line">System.out.println(&quot;s4==s6:&quot;+(s4==s6));//ture</span><br><span class="line">System.out.println(&quot;s5==s6:&quot;+(s5==s6));//false</span><br></pre></td></tr></table></figure>
+<p>第一种创建字符串的时候，会在常量池中查找是否有该对象，如果有，直接指向该内存地址，如果没有，先在常量池中创建，然后再指向其地址。这个过程在编译期就执行好了。</p>
+<p>第二种创建字符串，使用String的构造方法，在堆中创建String对象，然后String中的value在常量池中查找是否有该常量，该过程在运行期执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//String的构造方法</span><br><span class="line">public String(String original) &#123;</span><br><span class="line">        this.value = original.value;</span><br><span class="line">        this.hash = original.hash;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="String-StringBuilder-StringBuffer"><a href="#String-StringBuilder-StringBuffer" class="headerlink" title="String StringBuilder StringBuffer"></a>String StringBuilder StringBuffer</h3><p>String如上第一种声明的为字符串常量，所以随后对字符串的操作就是不断地创建与销毁对象。<br>StringBuilder和StringBuffer为字符串变量，可以直接更改指向的内容。在线程安全上，StringBuilder是线程不安全的，StringBuffer是线程安全的，可以看到StringBuffer中的很多方法都是带有synchronized关键字的。</p>
+<p>String:适用于少量的字符串操作。</p>
+<p>StringBuilder:适用于单线程下在字符缓冲区进行大量操作的情况。</p>
+<p>StringBuffer:适用于多线程下在字符缓冲区进行大量操作的情况（线程安全）。</p>
+<h4 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h4><h3 id="java注解"><a href="#java注解" class="headerlink" title="java注解"></a>java注解</h3><h4 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h4><p>元注解也是注解，它是用来给自定义注解标识的信息的。</p>
+<h3 id="Java泛型（generic）"><a href="#Java泛型（generic）" class="headerlink" title="Java泛型（generic）"></a>Java泛型（generic）</h3><p>Java泛型可以参数化类型，泛型存在于编译时期，如果泛型类型是安全的，就将泛型转换为原始类型，所以泛型的优点是可以在编译时检查类型错误，提高了代码的可靠性和可读性。</p>
+<p><strong>泛型类和泛型接口</strong>：可以为类定义泛型，那么在创建对象或者是声明一个引用变量的时候就要指明其类型。</p>
+<p><strong>泛型方法</strong>：可将类型作为参数传给方法，在方法前需要形式泛型类型，调用时再实例化泛型</p>
+<p><strong>泛型类</strong>，是在实例化类的时候指明泛型的具体类型；泛型方法，是在调用方法的时候指明泛型的具体类型（泛型方法调用形式object.<t>function(param),或者编译器通过传递的参数自动发现类型） 。</t></p>
+<p><strong>泛型方法与可变参数</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public &lt;N&gt; void printMsg(N ...args)&#123;</span><br><span class="line">    for(N n : args)&#123;</span><br><span class="line">        System.out.println(&quot;typeof n is&quot; + n.getClass());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">printMsg(&quot;111&quot;,222,&quot;aaaa&quot;,&quot;2323.4&quot;,55.55);</span><br><span class="line"></span><br><span class="line">输出</span><br><span class="line">typeof n isclass java.lang.String</span><br><span class="line">typeof n isclass java.lang.Integer</span><br><span class="line">typeof n isclass java.lang.String</span><br><span class="line">typeof n isclass java.lang.String</span><br><span class="line">typeof n isclass java.lang.Double</span><br></pre></td></tr></table></figure>
+<p><strong>通配泛型与受限泛型</strong></p>
+<p>非受限泛型:<t>  &lt;&lt;==&gt;&gt;  <t extends="" object=""><br>受限泛型:<e extends="" t=""> 为T类型的子类<br>非受限通配泛型:&lt;?&gt;  &lt;&lt;==&gt;&gt;  &lt;? extends Object&gt;<br>受限通配泛型:&lt;? extends T&gt; 为T或为T的子类型<br>下限通配泛型:&lt;? super T&gt; 为T或为T的父类型</e></t></t></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">A&lt;Number&gt;</span><br><span class="line">B&lt;Integer&gt;</span><br><span class="line">虽然Integer是Number的子类型，但是B&lt;Integer&gt;不是A&lt;Number&gt;的子类型，为了这个问题使用通配泛型</span><br><span class="line">A&lt;? extends Number&gt;</span><br><span class="line">或者A&lt;?&gt;</span><br><span class="line">举个例子</span><br><span class="line">public class Generic &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">        list.add(1);</span><br><span class="line">        list.add(2);</span><br><span class="line">        list.add(3);</span><br><span class="line">        test1(list);</span><br><span class="line">        test2(list);</span><br><span class="line">        test3(list);</span><br><span class="line">        test4(list);</span><br><span class="line">        //test5(list);</span><br><span class="line">    &#125;</span><br><span class="line">    public static void test1(ArrayList&lt;?&gt; list)&#123;</span><br><span class="line">        for (Object object: list)&#123;</span><br><span class="line">            System.out.println(object+&quot; type&quot;+object.getClass());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //？为通配符，所以在这里可以不用声明方法为泛型方法，如果使用泛型T的话，就要声明为泛型方法，但是受限又冲突了</span><br><span class="line">    public static void test2(ArrayList&lt;? extends Number&gt; list)&#123;</span><br><span class="line">        for (Object object: list)&#123;</span><br><span class="line">            System.out.println(object+&quot; type&quot;+object.getClass());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static &lt;T&gt; void test3(ArrayList&lt;T&gt; list)&#123;</span><br><span class="line">        for (Object object: list)&#123;</span><br><span class="line">            System.out.println(object+&quot; type&quot;+object.getClass());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static &lt;T extends Number&gt; void test4(ArrayList&lt;T&gt; list)&#123;</span><br><span class="line">        for (Object object: list)&#123;</span><br><span class="line">            System.out.println(object+&quot; type&quot;+object.getClass());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //这是错误的写法，编译不通过，(unexpected bound)因为已经给方法声明为泛型了，然后在传参的时候就不能让泛型受限了</span><br><span class="line">    /*public static &lt;T&gt; void test5(ArrayList&lt;T extends Number&gt; list)&#123;</span><br><span class="line">        for (Object object: list)&#123;</span><br><span class="line">            System.out.println(object+&quot; type&quot;+object.getClass());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;*/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意事项</strong>:</p>
+<p>泛型类的构造方法不用加<t></t></p>
+<p>泛型必须是引用类型，所以在传递基本类型的时候都会自动装箱。</p>
+<p>如果泛型类中的静态方法使用泛型，那么一定要为该静态方法形式泛型类型（一定为泛型静态方法）。<br>（有些不大明白）</p>
+<p>异常类不能是泛型，因为异常类是泛型的话，那么catch中的也是泛型，但这是运行时才知道的。</p>
+<p><strong>为什么不能定义泛型数组</strong></p>
+
+    </div>
+</article>
+    </main>
+  </body>
+</html>
