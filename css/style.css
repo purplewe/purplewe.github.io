@@ -269,7 +269,7 @@ body {
 }
 article {
   font-weight: 200;
-  font-family: "Noto Serif SC";
+/**font-family: $content-font;**/
   color: #3a3a3a;
 }
 article h1,
@@ -290,7 +290,7 @@ article .highlight {
 article p {
   text-indent: 2em;
   text-align: justify !important;
-  font-family: "Noto Serif SC";
+/** font-family: $content-font;**/
 }
 article .post-title .title {
   font-size: 2em;
