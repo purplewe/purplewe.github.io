@@ -65,17 +65,42 @@
     <main class="main">
       <article class="post">
     <div class="post-title">
-        <h2 class="title">深入学习tomcat</h2>
+        <h2 class="title">对tomcat的学习</h2>
     </div>
     <div class="post-meta">
         <span class="post-time">2019-06-30</span>
     </div>
     <div class="post-content">
-        <h3 id="架构分析"><a href="#架构分析" class="headerlink" title="架构分析"></a>架构分析</h3><h3 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h3><p>以tomcat８源码为例，首先是批处理文件startup.bat，主要是设置CATALINA_HOME并且查找是否有catalina.bat文件，如果有就执行。</p>
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> "CATALINA_HOME=<span class="variable">%CURRENT_DIR%</span>"</span><br><span class="line"><span class="built_in">set</span> "EXECUTABLE=<span class="variable">%CATALINA_HOME%</span>\bin\catalina.bat"</span><br><span class="line"><span class="keyword">call</span> "<span class="variable">%EXECUTABLE%</span>" <span class="built_in">start</span> <span class="variable">%CMD_LINE_ARGS%</span></span><br></pre></td></tr></table></figure>
-<h3 id="顶层架构"><a href="#顶层架构" class="headerlink" title="顶层架构"></a>顶层架构</h3><p><img src="/2019/06/30/对tomcat的一些理解/Architecture.png" alt="Please Wait"></p>
+        <h3 id="1-tomcat架构图"><a href="#1-tomcat架构图" class="headerlink" title="1. tomcat架构图"></a>1. tomcat架构图</h3><p><img src="/2019/06/30/对tomcat的一些理解/Architecture.png" alt="Please Wait"></p>
 <p>tomcat的顶层架构如上图所示，可以看到有server、service、connerctor、container四个组件，那么这四个组件又有什么作用呢？</p>
-<p>server：是最外层的组件，代表</p>
+<p><strong>server：</strong></p>
+<p>Server向客户端提供服务，并且服务器可以start或stop。</p>
+<p>缺点：如果需要该服务器支持多种网络协议，就很难扩展，因此改进如下：</p>
+<p><strong>connector和container</strong></p>
+<p>将容器拆分成Connector以及Container，Connector用于和客户端连接，可以扩展支持多种协议，建立连接之后将socket交给Container处理。</p>
+<p><strong>Service</strong></p>
+<p>通过service统一connector和container的映射关系</p>
+<p><strong>Host</strong></p>
+<p>在一个主机下支持多种域名服务</p>
+<p><strong>Context</strong></p>
+<p>可以部署多个应用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">connector支持的运行模式？</span><br><span class="line"></span><br><span class="line">- BIO：Java原生IO技术，同步阻塞IO</span><br><span class="line"></span><br><span class="line">- NIO：Jdk1.4，非阻塞IO</span><br><span class="line"></span><br><span class="line">- APR</span><br><span class="line"></span><br><span class="line">支持http、https、AJP等协议</span><br><span class="line"></span><br><span class="line">AJP协议适用于web容器和web容器的连接</span><br></pre></td></tr></table></figure>
+<h3 id="2-tomcat目录结构"><a href="#2-tomcat目录结构" class="headerlink" title="2. tomcat目录结构"></a>2. tomcat目录结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/bin：脚本文件目录。</span><br><span class="line"> /common/lib：存放所有web项目都可以访问的公共jar包（使用Common类加载器加载）。</span><br><span class="line"> /conf：存放配置文件，最重要的是server.xml。</span><br><span class="line"> /logs：存放日志文件。</span><br><span class="line"> /server/webapps：来管理Tomcat-web服务用的。仅对TOMCAT可见，对所有的WEB APP都不可见（使用Catalina类加载器加载）。</span><br><span class="line"> /shared/lib：仅对所有WEB APP可见，对TOMCAT不可见（使用Shared类加载器加载）。</span><br><span class="line"> /temp：Tomcat运行时候存放临时文件用的。</span><br><span class="line"> /webapps：web应用发布目录。</span><br><span class="line"> /work：Tomcat把各种由jsp生成的servlet文件放在这个目录下。删除后，启动时会自动创建。</span><br></pre></td></tr></table></figure>
+<h3 id="3-tomcat优化？"><a href="#3-tomcat优化？" class="headerlink" title="3. tomcat优化？"></a>3. tomcat优化？</h3><p><strong>基础调优</strong></p>
+<p>适当调整tomcat的最大线程数、最大空闲线程数、连接超时时间</p>
+<p>开启http压缩，客户端请求静态文件时，服务端将静态文件压缩发送至客户端，再有客户端浏览器进行解压</p>
+<p><strong>内存调优</strong></p>
+<p>-Xmx</p>
+<p>-Xms</p>
+<p>-Xmn设置年轻代大小</p>
+<p>-Xss设置栈大小</p>
+<p>-XX:NewRatio=num设置年轻代与老年代的比例</p>
+<p>-XX:SurvivorRatio=num设置survivor与eden区的比例</p>
+<p>-XX:MaxPermSize=num(M)设置永久区的大小</p>
+<p>-XX:MetaspaceSize=200m;-XX:MaxMetaspaceSize=256m;jdk1.8后使用hotspot虚拟机方法区的实现变为元空间</p>
+<p><strong>垃圾回收策略调优</strong></p>
+<p>搭配不同的垃圾回收器和垃圾回收算法</p>
+<p>有空分析一下tomcat的启动脚本文件<br><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> "CATALINA_HOME=<span class="variable">%CURRENT_DIR%</span>"</span><br><span class="line"><span class="built_in">set</span> "EXECUTABLE=<span class="variable">%CATALINA_HOME%</span>\bin\catalina.bat"</span><br><span class="line"><span class="keyword">call</span> "<span class="variable">%EXECUTABLE%</span>" <span class="built_in">start</span> <span class="variable">%CMD_LINE_ARGS%</span></span><br></pre></td></tr></table></figure></p>
 
     </div>
 </article>

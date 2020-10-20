@@ -94,7 +94,7 @@
 <p>根据老年代的特点，提出了一种“标记——整理”的算法，标记整理算法几乎与“标记——清除”算法一样，但是后续还会将存活的对象都往一端移动，然后直接清理掉段边界以外的内存。</p>
 <h4 id="分代收集算法"><a href="#分代收集算法" class="headerlink" title="分代收集算法"></a>分代收集算法</h4><p>新生代中对象存活率低，一般使用复制算法，只需要付出少量存活对象的复制成本。</p>
 <p>老年代中对象存活率高，一般使用标记——清除或标记整理——算法。</p>
-<h3 id="垃圾收集器"><a href="#垃圾收集器" class="headerlink" title="垃圾收集器"></a>垃圾收集器</h3><p><img src="/2019/06/16/JVM中的垃圾收集器/" alt="HotSpot中的垃圾收集器"><br>HotSpot中提供了其中作用于不同分代的收集器。不同场景使用不同或不同组合的收集器。</p>
+<h4 id="YGC和FGC触发的时机"><a href="#YGC和FGC触发的时机" class="headerlink" title="YGC和FGC触发的时机"></a>YGC和FGC触发的时机</h4><h3 id="垃圾收集器"><a href="#垃圾收集器" class="headerlink" title="垃圾收集器"></a>垃圾收集器</h3><p><img src="/2019/06/16/JVM中的垃圾收集器/" alt="HotSpot中的垃圾收集器"><br>HotSpot中提供了其中作用于不同分代的收集器。不同场景使用不同或不同组合的收集器。</p>
 <p>Serial收集器</p>
 <p>ParNew收集器</p>
 <p>Parallel Scavenge收集器</p>

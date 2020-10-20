@@ -63,66 +63,27 @@
     </header>
 </div>
     <main class="main">
-      <p class="saySomething">Welcome, I am purplewe, an open source enthusiast.</p>
-<ul class="posts">My Blog:
-    
-        <li class="post">
-            <div class="post-meta">
-                <span class="post-time">2019-12-19</span>
-            </div>&nbsp;&nbsp;»&nbsp;&nbsp;
-            <div class="post-title">
-                <a class="post-title-link" href="/2019/12/19/数据库备份策略/">
-                    数据库备份策略
-                </a>
-            </div>
-        </li>
-        
-        <li class="post">
-            <div class="post-meta">
-                <span class="post-time">2019-11-19</span>
-            </div>&nbsp;&nbsp;»&nbsp;&nbsp;
-            <div class="post-title">
-                <a class="post-title-link" href="/2019/11/19/gitlab部署及常见问题的处理/">
-                    gitlab部署及常见问题的处理
-                </a>
-            </div>
-        </li>
-        
-        <li class="post">
-            <div class="post-meta">
-                <span class="post-time">2019-06-30</span>
-            </div>&nbsp;&nbsp;»&nbsp;&nbsp;
-            <div class="post-title">
-                <a class="post-title-link" href="/2019/06/30/对tomcat的一些理解/">
-                    对tomcat的学习
-                </a>
-            </div>
-        </li>
-        
-        <li class="post">
-            <div class="post-meta">
-                <span class="post-time">2019-06-16</span>
-            </div>&nbsp;&nbsp;»&nbsp;&nbsp;
-            <div class="post-title">
-                <a class="post-title-link" href="/2019/06/16/JVM中的垃圾收集器/">
-                    JVM中的垃圾收集器
-                </a>
-            </div>
-        </li>
-        
-        <li class="post">
-            <div class="post-meta">
-                <span class="post-time">2019-03-28</span>
-            </div>&nbsp;&nbsp;»&nbsp;&nbsp;
-            <div class="post-title">
-                <a class="post-title-link" href="/2019/03/28/每天一点ES6/">
-                    每天一点es6
-                </a>
-            </div>
-        </li>
-        
-</ul>
+      <article class="post">
+    <div class="post-title">
+        <h2 class="title">Java线程池运行分析</h2>
+    </div>
+    <div class="post-meta">
+        <span class="post-time">2020-08-12</span>
+    </div>
+    <div class="post-content">
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService executorService = Executors.newCachedThreadPool();</span><br><span class="line">ExecutorService executorService1 = Executors.newFixedThreadPool(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ThreadPoolExecutor threadPoolExecutor = <span class="keyword">new</span> ThreadPoolExecutor(<span class="number">10</span>,</span><br><span class="line">                <span class="number">20</span>,</span><br><span class="line">                <span class="number">10</span>,</span><br><span class="line">                TimeUnit.SECONDS,</span><br><span class="line">                <span class="keyword">new</span> ArrayBlockingQueue&lt;&gt;(<span class="number">10</span>));</span><br></pre></td></tr></table></figure>
+<p>创建一个线程池，它的构造函数有四个非常重要的参数</p>
+<p>corePoolSize 核心线程数</p>
+<p>maximumPoolSize 最大线程数</p>
+<p>keepAliveTime 线程空闲时间</p>
+<p>BlockingQueue workQueue 阻塞队列</p>
+<p>就那我上面创建的那个线程池来说，当有10个以内的任务需要执行时，会在线程池中创建相应的线程执行，当任务数大于10的时候，任务就会进入阻塞队列中，等待空闲的任务执行，当任务数大于20的时候，阻塞队列装不下了，也没有空闲的线程，但是这个时候的线程数是小于最大线程数20的，所以这个时候还会创建线程来执行20后面的任务（不会先执行阻塞队列的任务哦），如果这个时候任务数大于30且线程数已经最大，阻塞队列页塞不下，那么就会抛出RejectedExecutionException异常。这个时候如果有线程空闲就会去执行阻塞队列中的任务，当线程没有任务可以执行并且超过线程空闲时间，那么线程就会被销毁。</p>
+<p><img src="/2020/08/12/Java线程池原理分析/1.png" alt=""></p>
+<p><center>图片来自B站up主free-coder</center><br>线程池中创建的线程通过代理的方式执行原来的任务</p>
+<p><img src="/2020/08/12/Java线程池原理分析/2.png" alt=""></p>
 
+    </div>
+</article>
     </main>
   </body>
 </html>

@@ -63,66 +63,26 @@
     </header>
 </div>
     <main class="main">
-      <p class="saySomething">Welcome, I am purplewe, an open source enthusiast.</p>
-<ul class="posts">My Blog:
-    
-        <li class="post">
-            <div class="post-meta">
-                <span class="post-time">2019-12-19</span>
-            </div>&nbsp;&nbsp;»&nbsp;&nbsp;
-            <div class="post-title">
-                <a class="post-title-link" href="/2019/12/19/数据库备份策略/">
-                    数据库备份策略
-                </a>
-            </div>
-        </li>
-        
-        <li class="post">
-            <div class="post-meta">
-                <span class="post-time">2019-11-19</span>
-            </div>&nbsp;&nbsp;»&nbsp;&nbsp;
-            <div class="post-title">
-                <a class="post-title-link" href="/2019/11/19/gitlab部署及常见问题的处理/">
-                    gitlab部署及常见问题的处理
-                </a>
-            </div>
-        </li>
-        
-        <li class="post">
-            <div class="post-meta">
-                <span class="post-time">2019-06-30</span>
-            </div>&nbsp;&nbsp;»&nbsp;&nbsp;
-            <div class="post-title">
-                <a class="post-title-link" href="/2019/06/30/对tomcat的一些理解/">
-                    对tomcat的学习
-                </a>
-            </div>
-        </li>
-        
-        <li class="post">
-            <div class="post-meta">
-                <span class="post-time">2019-06-16</span>
-            </div>&nbsp;&nbsp;»&nbsp;&nbsp;
-            <div class="post-title">
-                <a class="post-title-link" href="/2019/06/16/JVM中的垃圾收集器/">
-                    JVM中的垃圾收集器
-                </a>
-            </div>
-        </li>
-        
-        <li class="post">
-            <div class="post-meta">
-                <span class="post-time">2019-03-28</span>
-            </div>&nbsp;&nbsp;»&nbsp;&nbsp;
-            <div class="post-title">
-                <a class="post-title-link" href="/2019/03/28/每天一点ES6/">
-                    每天一点es6
-                </a>
-            </div>
-        </li>
-        
-</ul>
+      <article class="post">
+    <div class="post-title">
+        <h2 class="title">代码扫描</h2>
+    </div>
+    <div class="post-meta">
+        <span class="post-time">2020-08-06</span>
+    </div>
+    <div class="post-content">
+        <p><strong>SonarQube</strong> 是一个用于代码质量管理的开源平台，可以用来做静态代码扫描，以提升code review的效率，提升代码的质量。以下有三种方案可供选择，适用于项目的不同阶段，不同角色，可以单独使用，也可以搭配使用。</p>
+<p><strong>开发人员</strong><br>下载sonarLint插件到idea上，配置好sonar server端信息后，开发人员可以随时手动触发扫描，可以全局扫描、指定文件夹或者指定单个文件。</p>
+<p><strong>CodeReviewer</strong><br>Sonar+gitlab扫描代码，每次提交代码进行代码增量扫描。</p>
+<p><strong>项目经理</strong><br>触发方式有多种，mvn命令、sonar-scanner搭配Jenkins触发等方式，可以全局扫描并生成报告，适合一段时间总结代码的质量。</p>
+<hr>
+<p>总结：<br>以上三种方案都是按照sonar服务器端配置的规则进行静态代码扫描，但是第二种实行起来有困难，目前没有看到比较好的方案。</p>
+<p>那么每次提交代码，为了防止不规范的代码提交到仓库，还有什么办法呢？</p>
+<p>可以借鉴前端项目的方案，前端代码的检测工具eslint与husky搭配可以做到在提交代码的时候监测代码，不符合规范就阻止本次提交，并展示不符合规范的内容。</p>
+<p>那么后端其实也可以这样做，原理就是使用git的hooks，在提交前执行hook中的脚本，通过脚本获取本次提交的文件，对这些文件进行扫描，如果没问题就正常提交，有问题显示问题并终止本次提交。</p>
 
+    </div>
+</article>
     </main>
   </body>
 </html>
