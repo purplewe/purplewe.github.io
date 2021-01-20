@@ -66,30 +66,9 @@ int a = i;
 
 #### 饿汉模式
 
-```
-public class Singleton{
-    private static Singleton singleton = new Singleton();
-    private Singleton(){}
-    public static Singleton getSingleton(){
-        return singleton;
-    }
-}
-```
-特点：简单安全，但是无法达到延迟加载
 
-#### 懒汉模式
 
-```
-public class Singleton{
-    private static Singleton singleton = null;
-    private Singleton(){}
-    public static Singleton getSingleton(){
-        if(singleton == null) singleton = new Singleton();
-        return singleton;
-    }
-}
-```
-特点：可以延迟加载但是线程不安全，会导致创建多个实例
+
 
 [其他优化模式](https://www.cnblogs.com/andy-zhou/p/5363585.html)
 
@@ -246,7 +225,7 @@ Java泛型可以参数化类型，泛型存在于编译时期，如果泛型类�
 public <N> void printMsg(N ...args){
     for(N n : args){
         System.out.println("typeof n is" + n.getClass());
-    }
+    }s
 }
 
 printMsg("111",222,"aaaa","2323.4",55.55);
