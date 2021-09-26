@@ -1,23 +1,23 @@
 article {
-    font-weight: 200;
-    /**font-family: $content-font;**/
-    color: #3a3a3a;
     h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol, dl, figure, .highlight {
-        margin-bottom: 15px;
+        margin-bottom: 0.2em;
+        font-weight: normal;
     }
     p {
-        text-indent: 2em;
-        text-align: justify !important
-        /** font-family: $content-font;**/
+        // text-indent: 2em;
+        text-align: justify !important;
+        margin-bottom: 1em;
     }
-    .post-title{
+    question {
+        font-size: 0.8em;
+    }
+    .post-title {
         .title {
-            font-size: 2em;
-            font-weight: 300;
+            font-size: 1.8em;
+            font-weight: 500;
         }
     }
     .post-meta {
-        font-size: 1em;
         color: #828282;
         margin-bottom: 20px;
     }
@@ -31,15 +31,6 @@ article {
         line-height: $line-height-code-block;
         .gutter {
             width: 30px;
-        }
-        table {
-            margin: 0;
-            width: auto;
-            border: none;
-        }
-        td {
-            border: none;
-            padding: 0;
         }
         figcaption {
             font-size: 0.85em;
@@ -123,19 +114,20 @@ article {
             border-bottom: 1px dashed Red;
             color: #00f;
         }
-        p {
-            font-size: 1.1em;
-            color: #666;
-        }
-        h3, h4, h5, h6{
-            font-weight: 300;
-            color: black;
-        }
-        h3 {
+        h1 {
             font-size: 1.5em;
         }
-        h4 {
+        h2 {
+            font-size: 1.4em;
+        }
+        h3 {
             font-size: 1.3em;
+        }
+        h4 {
+            font-weight: 600;
+            font-size: 1.2em;
+            // text-decoration: underline;
+            border-bottom: 1px solid black;
         }
         h5 {
             font-size: 1.1em;
