@@ -3,6 +3,163 @@ title: Spring源码阅读之spring-core
 tags:
 ---
 
+springIOC的两种实现方式
+
+依赖查找
+  1.根据bean名称查找
+    实时查找
+    延迟查找
+      ObjectFactory
+  2.根据bean类型查找
+    单个bean查找
+    bean集合查找
+  3.根据注解查找
+
+依赖查找的前世今生
+
+依赖注入
+  1.根据bean名称注入
+  2.根据bean类型注入
+  3.注入容器内建bean对象
+  4.注入非bean对象
+  5.注入类型
+依赖来源
+  1.自定义bean
+  2.容器内建bean
+  3.容器内建依赖
+IOC配置元信息
+  1.基于xml文件
+  2.基于properties文件
+  3.基于Java注解
+  4.基于JavaAPI
+IOC容器配置
+  1.基于xml
+  2.基于Java注解
+  3.基于JavaAPI
+外部化配置
+
+BeanFactory和ApplicationContext到底哪个才是IOC容器？
+The org.springframework.beans and org.springframework.context packages are the basis for Spring Framework’s IoC container. The BeanFactory interface provides an advanced configuration mechanism capable of managing any type of object. ApplicationContext is a sub-interface of BeanFactory. It adds:
+
+- Easier integration with Spring’s AOP features
+- Message resource handling (for use in internationalization)
+- Event publication
+- Application-layer specific contexts such as the WebApplicationContext for use in web applications.
+
+You should use an ApplicationContext unless you have a good reason for not doing so, with GenericApplicationContext and its subclass AnnotationConfigApplicationContext as the common implementations for custom bootstrapping. These are the primary entry points to Spring’s core container for all common purposes: loading of configuration files, triggering a classpath scan, programmatically registering bean definitions and annotated classes, and (as of 5.0) registering functional bean definitions.
+
+Because an ApplicationContext includes all the functionality of a BeanFactory, it is generally recommended over a plain BeanFactory, except for scenarios where full control over bean processing is needed. Within an ApplicationContext (such as the GenericApplicationContext implementation), several kinds of beans are detected by convention (that is, by bean name or by bean type — in particular, post-processors), while a plain DefaultListableBeanFactory is agnostic about any special beans.
+
+For many extended container features, such as annotation processing and AOP proxying, the BeanPostProcessor extension point is essential. If you use only a plain DefaultListableBeanFactory, such post-processors do not get detected and activated by default. This situation could be confusing, because nothing is actually wrong with your bean configuration. Rather, in such a scenario, the container needs to be fully bootstrapped through additional setup.
+
+In short, the BeanFactory provides the configuration framework and basic functionality, and the ApplicationContext adds more enterprise-specific functionality.
+
+ApplicationContext is a BeanFacotry
+ApplicationContext has a BeanFactory
+
+ApplicationContext除了IOC容器的角色，还提供
+- 面向切面
+- 配置元信息
+- 资源管理
+- 事件
+- 国际化
+- 注解
+- Environment抽象
+
+
+refresh方法，ioc容器启动
+
+
+1. Spring Bean：spring框架中定义bean的配置元信息接口
+   1. Bean的类名
+   2. Bean行为配置元素（作用域、自动绑定的模式、生命周期回调）
+   3. 其它Bean的引用，也就是依赖
+   4. 配置设置
+2. BeanDefinition元信息
+3. 命名Spring Bean
+4. Spring Bean 别名
+5. 注册
+6. 实例化
+7. 初始化
+8. 延迟初始化
+9.  销毁
+10. 垃圾回收
+
+BeanDefinition
+1. get
+2. set
+3. has
+4. is
+5. fields
+   1. ROLE_APPLICATION: 
+   2. ROLE_INFRASTRUCTURE：
+   3. ROLE_SUPPORT：
+   4. SCOPE_PROTOTYPE：作用域标识符，原型
+   5. SCOPE_SINGLETON：作用域标识符，单例
+
+BeanDefinition构建
+1. 通过BeanDefinitionBuilder
+2. 通过AbstractBeanDefinition以及派生类
+
+命名Spring Bean
+1. 指定名称(xml)
+2. 不指定名称(注解)
+
+Spring Bean别名
+
+注册Spring Bean
+1. XML配置元信息
+2. Java注解配置元信息
+   1. @Bean
+   2. @Component
+   3. @Import
+3. JavaAPI配置元信息
+   1. 命名方式BeanDefinitionRegistry#registerBeanDefinition
+   2. 非命名方式BeanDefinitionReaderUtils#registerWithGeneratedName
+   3. 配置类的方式AnnotatedBeanDefinitionReader.register
+
+实例化Spring Bean
+1. 常规方式
+2. 特殊方式
+
+初始化Spring Bean
+1. @PostConstruct
+2. 实现InitializingBean接口的afterPropertiesSet()方法
+3. 自定义初始化方法
+   1. init-method
+   2. AbstractBeanDefinition#setInitMethodName
+
+延迟初始化（延迟加载）
+
+  构造器注入
+  setter注入 
+
+依赖查找的前世今生
+
+###############
+单一类型查找
+1. JNDI--javax.naming.Context#lookup
+2. JavaBeans--java.beans.beancontext.BeanContext
+
+集合类型查找
+java.beans.beancontext.BeanContext
+
+层次性依赖查找
+
+################
+
+
+
+
+
+
+
+
+
+
+
+###########################################################
+
 Environment:
 Spring中的Environment接口从两个方面来描述应用运行的环境：profiles（配置文件）、properties（属性）。
 
@@ -18,7 +175,7 @@ Spring中的Profile可以理解为我们在Spring容器中所定义的Bean的逻
 	String[] getDefaultProfiles();
   //返回一个或多个给定的配置文件是否处于活动状态，或者在没有明确的活动配置文件的情况下，一个或多个给定的配置文件是否包含在一组默认配置文件中。
 	boolean acceptsProfiles(String... profiles);
-
+  //判断给定的profiles是否与active profiles匹配
 	boolean acceptsProfiles(Profiles profiles);
 ```
 
