@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>
+        purplewe
+    </title>
+    <!-- TODO后续还是选用一个稳定的 -->
+    <link href="https://fonts.loli.net/css?family=Permanent+Marker|Roboto:500i|Lato:400" rel="stylesheet">
+    <link href='https://fonts.loli.net/css?family=Noto+Serif+SC:400' rel='stylesheet'>
+        
+<link rel="stylesheet" href="/css/style.css">
+
+        
+<link rel="stylesheet" href="/icon/iconfont.css">
+
+        
+<script src="/icon/iconfont.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+  <body>
+    <div class="header-wrapper">
+    <header class="header">
+        <div class="blog-title">
+            <a href="/" class="logo">
+                purplewe
+            </a>
+        </div>
+        <div class="site-nav">
+            <a href="#" class="menu-icon">
+                <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+            </a>
+            <div class="trigger">
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconhome1"></use>
+                    </svg>
+                    <a class="page-link" href="/" class="menu-item-link">
+                        Home
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconDog"></use>
+                    </svg>
+                    <a class="page-link" href="/about" class="menu-item-link">
+                        About
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconlove"></use>
+                    </svg>
+                    <a class="page-link" href="/love-journey" class="menu-item-link">
+                        Love Journey
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconGitHub"></use>
+                    </svg>
+                    <a class="page-link" target="_blank" rel="noopener" href="https://github.com/purplewe" class="menu-item-link">
+                        GitHub
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </header>
+</div>
+    <main class="main">
+      <article class="post">
+    <div class="post-title">
+        <h2 class="title">JVM中的垃圾收集器</h2>
+    </div>
+    <div class="post-meta">
+        <span class="post-time">2019-06-16</span>
+    </div>
+    <div class="post-content">
+        <h3 id="如何判断对象是否应该回收？"><a href="#如何判断对象是否应该回收？" class="headerlink" title="如何判断对象是否应该回收？"></a>如何判断对象是否应该回收？</h3><p>Java垃圾收集器主要工作在堆中，回收对象之前，首先需要判断该对象是否需要回收，那么如何判断一个对象是否应该回收？</p>
+<h4 id="引用计数法"><a href="#引用计数法" class="headerlink" title="引用计数法"></a>引用计数法</h4><p>给对象添加一个计数器，每当一个地方引用对象时，计数器就进行加一操作，每当一个引用失效，计数器就进行减一操作。这个方法简单，判定效率高，但是它存在对象之间相互引用的问题。比如objA中的属性引用objB，objB中的属性引用objA，那么这两个对象相互引用，就导致GC不能回收这两个对象。不过HotSpot虚拟机不是采用这种算法。</p>
+<p>没一个对象都有一个计数器，被引用了就加一，引用失效就减一，当计数器为0是，该对象就可以被GC回收。</p>
+<h4 id="根搜索算法"><a href="#根搜索算法" class="headerlink" title="根搜索算法"></a>根搜索算法</h4><p>通过一系列的名为“GC Roots”的对象作为起始点，从这些节点向下搜索，搜索过的路径成为引用链，当一个对象到任何一个“GC Roots”都没有引用链相连，就说明这个对象不可用，需要回收了。</p>
+<p>可作为GC Roots的对象可包括下列：</p>
+<p>1.栈帧中的的本地变量表中的引用的对象</p>
+<p>2.方法区中类静态属性引用的对象</p>
+<p>3.方法区中常量所引用的对象</p>
+<p>4.本地方法栈中JNI的引用的对象</p>
+<h4 id="finalize"><a href="#finalize" class="headerlink" title="finalize()"></a>finalize()</h4><p>如果对象到“GC Roots”不可达，也并不会马上回收，会进行一次标记并且进行一次筛选，筛选的条件是是否有必要执行finalize方法，如果finalize被覆盖并且没有执行过，那么这个对象会放置在一个名为F-Queue的队列中，有一个低优先级的Finalizer线程去执行，并且只是执行，并不确保能执行结束。如果在此时将该对象与引用链上的任何对象相连，便可让他重新存活，但是记住finalze方法至多只能执行一次。不过这个方法不推荐使用。</p>
+<h3 id="回收方法区"><a href="#回收方法区" class="headerlink" title="回收方法区"></a>回收方法区</h3><p>一般方法区执行垃圾回收是非常少的，回收的效率比较低，这也是为什么方法区也被成为永久代。永久代的垃圾收集主要分为两部分——废弃的常量和无用的类。</p>
+<p>只要任何地方都没有引用该常量，那么这个常量就需要被回收了。</p>
+<p>判断一个无用的类需要满足以下三个条件</p>
+<p>1.内存中不存在任何该类的实例</p>
+<p>2.该类的ClassLoader已经被回收</p>
+<p>3.无法在任何地方通过反射访问该类的方法</p>
+<h3 id="垃圾收集算法"><a href="#垃圾收集算法" class="headerlink" title="垃圾收集算法"></a>垃圾收集算法</h3><h4 id="标记——清除算法"><a href="#标记——清除算法" class="headerlink" title="标记——清除算法"></a>标记——清除算法</h4><p>首先标记出需要回收的对象，在标记完成后统一回收所有被标记的对象，标记过程如同根搜索算法。标记清除是最基本的算法，后续的算法都是根据该算法的缺点进行改进的。</p>
+<p>该算法的缺点，一个是效率问题，效率不高；另一个是空间问题，因为该算法会导致大量不连续的空间碎片，这样当程序需要分配较大内存的空间时，就找不到足够的空间。</p>
+<h4 id="复制算法"><a href="#复制算法" class="headerlink" title="复制算法"></a>复制算法</h4><p>他将内存划分为大小相等的两块，每次使用其中的一块，当这一块内存用满时，就将还存活的对象复制到另一块空的内存中去，然后将这一块空间全部清除，这样就不会产生不连续的内存碎片了，但是这样比较浪费空间，每次都要预留一块空间。</p>
+<p>考虑到新生代中大部分的内存是需要回收的，于是Java虚拟机就按8:1:1的比例分配给Eden和两块较小的Survivor，当回收时将Eden和Survivor中还存在的对象一次性拷贝到另一块Survivor中，最后清理Eden和一块Survivor空间，HotSpot默认分配比例是8:1:1。但是我们不能保证存活的对象每次都小于10%，那么当Survivor空间不足时，就需要老年代进行分配担保，也就是将其复制到老年代的内存中。</p>
+<h4 id="标记——整理算法"><a href="#标记——整理算法" class="headerlink" title="标记——整理算法"></a>标记——整理算法</h4><p>复制算法中存在的缺陷是，我们不想浪费50%的内存空间，那么就需要额外的内存担保，所以老年代一般不推荐使用这种算法。</p>
+<p>根据老年代的特点，提出了一种“标记——整理”的算法，标记整理算法几乎与“标记——清除”算法一样，但是后续还会将存活的对象都往一端移动，然后直接清理掉段边界以外的内存。</p>
+<h4 id="分代收集算法"><a href="#分代收集算法" class="headerlink" title="分代收集算法"></a>分代收集算法</h4><p>新生代中对象存活率低，一般使用复制算法，只需要付出少量存活对象的复制成本。</p>
+<p>老年代中对象存活率高，一般使用标记——清除或标记整理——算法。</p>
+<h4 id="YGC和FGC触发的时机"><a href="#YGC和FGC触发的时机" class="headerlink" title="YGC和FGC触发的时机"></a>YGC和FGC触发的时机</h4><h3 id="垃圾收集器"><a href="#垃圾收集器" class="headerlink" title="垃圾收集器"></a>垃圾收集器</h3><p><img src alt="HotSpot中的垃圾收集器"><br>HotSpot中提供了其中作用于不同分代的收集器。不同场景使用不同或不同组合的收集器。</p>
+<p>Serial收集器</p>
+<p>ParNew收集器</p>
+<p>Parallel Scavenge收集器</p>
+<p>Serial Old收集器</p>
+<p>Parallel Old收集器</p>
+<p>CMS收集器</p>
+<p>G1收集器</p>
+
+    </div>
+</article>
+    </main>
+  </body>
+</html>

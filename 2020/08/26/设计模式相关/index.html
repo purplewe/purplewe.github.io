@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>
+        purplewe
+    </title>
+    <!-- TODO后续还是选用一个稳定的 -->
+    <link href="https://fonts.loli.net/css?family=Permanent+Marker|Roboto:500i|Lato:400" rel="stylesheet">
+    <link href='https://fonts.loli.net/css?family=Noto+Serif+SC:400' rel='stylesheet'>
+        
+<link rel="stylesheet" href="/css/style.css">
+
+        
+<link rel="stylesheet" href="/icon/iconfont.css">
+
+        
+<script src="/icon/iconfont.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+  <body>
+    <div class="header-wrapper">
+    <header class="header">
+        <div class="blog-title">
+            <a href="/" class="logo">
+                purplewe
+            </a>
+        </div>
+        <div class="site-nav">
+            <a href="#" class="menu-icon">
+                <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+            </a>
+            <div class="trigger">
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconhome1"></use>
+                    </svg>
+                    <a class="page-link" href="/" class="menu-item-link">
+                        Home
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconDog"></use>
+                    </svg>
+                    <a class="page-link" href="/about" class="menu-item-link">
+                        About
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconlove"></use>
+                    </svg>
+                    <a class="page-link" href="/love-journey" class="menu-item-link">
+                        Love Journey
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconGitHub"></use>
+                    </svg>
+                    <a class="page-link" target="_blank" rel="noopener" href="https://github.com/purplewe" class="menu-item-link">
+                        GitHub
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </header>
+</div>
+    <main class="main">
+      <article class="post">
+    <div class="post-title">
+        <h2 class="title">设计模式</h2>
+    </div>
+    <div class="post-meta">
+        <span class="post-time">2020-08-26</span>
+    </div>
+    <div class="post-content">
+        <p>本篇文章主要介绍对设计模式的基础理解，以及一些常见设计模块应用</p>
+<p>GOF23种设计模式的出现是为了使程序具备扩展性、灵活性以及易读性。</p>
+<ul>
+<li><strong>开闭原则</strong>：对程序的修改封闭，对程序的的扩展开放。当我们对一个功能代码进行修改时，最好不要对原代码进行直接修改，应该重新写过修改后的功能，然后将原功能进行替换。这样的程序更具有灵活性、延续性。</li>
+<li><strong>依赖倒置原则</strong>：抽象不应该依赖于细节，细节应当依赖于抽象。在程序中使用抽象层编程，在调用的时候再注入具体的实现类，降低了类之间的耦合性，并且也可以在不修改原实现的类情况下对抽象类进行拓展，总而言之，要面向接口编程。</li>
+<li><strong>里氏替换原则</strong>：在软件中将一个基类对象替换成它的子类对象，程序将不会产生任何错误和异常，反过来则不成立，如果一个软件实体使用的是一个子类对象的话，那么它不一定能够使用基类对象。例如：我喜欢动物，那我一定喜欢狗，因为狗是动物的子类；但是我喜欢狗，不能据此断定我喜欢动物，因为我并不喜欢老鼠，虽然它也是动物。</li>
+<li><strong>迪米特原则</strong>：应该尽量减少对象之间的交互，如果两个对象之间不必彼此直接通信，那么这两个对象就不应当发生任何直接的相互作用，如果其中的一个对象需要调用另一个对象的某一个方法的话，可以通过第三者转发这个调用。</li>
+<li><strong>单一职责原则</strong>：一个类、接口或者是方法只负责一个功能领域中的相应职责，单一职责原则是实现高内聚、低耦合的指导方针，它是最简单但又最难运用的原则，需要设计人员发现类的不同职责并将其分离，而发现类的多重职责需要设计人员具有较强的分析设计能力和相关实践经验。</li>
+<li><strong>接口隔离原则</strong>：用多个专门的接口，而不使用单一的总接口，客户端不应该依赖他不需要的接口，建立单一的几口，不要建立庞大臃肿的接口，细化接口，接口中的方法尽量少，但也需要适度原则，一定要适度。</li>
+</ul>
+<p><strong>创建型</strong></p>
+<ul>
+<li>工厂模式</li>
+</ul>
+<p>静态工厂模式：核心工厂类根据给定的条件创建需要的类</p>
+<p>工厂方法模式：核心的工厂类不再负责所有的产品的创建，而是将具体创建的工作交给子类去做。该核心类成为一个抽象工厂角色，仅负责给出具体工厂子类必须实现的接口，而不接触哪一个产品类应当被实例化这种细节。（jdk集合框架中各个子类的迭代器、slf4j）<br>抽象工厂模式：抽象工厂模式可以向客户端提供一个接口，使客户端在不必指定产品的具体的情况下，创建多个产品族（产品族要相对固定的）中的产品对象。 </p>
+<ul>
+<li>单例模式（runtime,）</li>
+</ul>
+<p>饿汉式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton&#123;</span><br><span class="line">    private static Singleton singleton = new Singleton();</span><br><span class="line">    private Singleton()&#123;&#125;</span><br><span class="line">    public static Singleton getSingleton()&#123;</span><br><span class="line">        return singleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>特点：简单安全，但是无法达到延迟加载</p>
+<p>懒汉式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton&#123;</span><br><span class="line">    private static Singleton singleton = null;</span><br><span class="line">    private Singleton()&#123;&#125;</span><br><span class="line">    public static Singleton getSingleton()&#123;</span><br><span class="line">        if(singleton == null) singleton = new Singleton();</span><br><span class="line">        return singleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>特点：可以延迟加载但是线程不安全，会导致创建多个实例<br>加锁</p>
+<p>双重校验：参考spring源码中的ApplicationConversionService类</p>
+<p><strong>结构型</strong></p>
+<ul>
+<li><p>代理模式：代理模式中给一个对象提供一个代理对象，代理对象拥有原对象的引用，通过代理对象对原对象一些功能进行增强（经纪人、房产中介、AOP）</p>
+<p>静态代理</p>
+</li>
+</ul>
+<p>动态代理（JDK动态代理、CGlib动态代理）</p>
+<ul>
+<li>适配器模式：使两个不兼容的接口协同工作（springMVC中的HandlerAdapter）</li>
+</ul>
+<p>对象适配器模式</p>
+<p>类适配器模式</p>
+<ul>
+<li><p>桥接模式</p>
+</li>
+<li><p>装饰器模式：动态地将责任附加到对象上。若要扩展功能，装饰者提供了比继承更有弹性的替代方案。（FilterInputStream）</p>
+</li>
+</ul>
+<p><strong>行为型</strong></p>
+<ul>
+<li><p>模板模式：抽象类定义业务处理骨架，具体实现子类完成（IOC中的refresh方法）</p>
+</li>
+<li><p>迭代器模式：在不用知道数据结构内部的情况下，提供一个统一的遍历方式<br>迭代器的作用就是提供一种统一的遍历数据结构的方式，比如说arraylist和linkedlist一个是数组一个是链表，具体遍历的方式肯定不同，一个是通过数组下标，一个是通过指针，所以iterator的作用就是在不需要了解具体内部的数据结构，提供一个统一的遍历方法，当然增强for循环的出现使得迭代器遍历的写法更简洁、更优雅。</p>
+</li>
+</ul>
+
+    </div>
+</article>
+    </main>
+  </body>
+</html>

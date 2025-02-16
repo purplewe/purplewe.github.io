@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>
+        purplewe
+    </title>
+    <!-- TODO后续还是选用一个稳定的 -->
+    <link href="https://fonts.loli.net/css?family=Permanent+Marker|Roboto:500i|Lato:400" rel="stylesheet">
+    <link href='https://fonts.loli.net/css?family=Noto+Serif+SC:400' rel='stylesheet'>
+        
+<link rel="stylesheet" href="/css/style.css">
+
+        
+<link rel="stylesheet" href="/icon/iconfont.css">
+
+        
+<script src="/icon/iconfont.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+  <body>
+    <div class="header-wrapper">
+    <header class="header">
+        <div class="blog-title">
+            <a href="/" class="logo">
+                purplewe
+            </a>
+        </div>
+        <div class="site-nav">
+            <a href="#" class="menu-icon">
+                <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+            </a>
+            <div class="trigger">
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconhome1"></use>
+                    </svg>
+                    <a class="page-link" href="/" class="menu-item-link">
+                        Home
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconDog"></use>
+                    </svg>
+                    <a class="page-link" href="/about" class="menu-item-link">
+                        About
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconlove"></use>
+                    </svg>
+                    <a class="page-link" href="/love-journey" class="menu-item-link">
+                        Love Journey
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconGitHub"></use>
+                    </svg>
+                    <a class="page-link" target="_blank" rel="noopener" href="https://github.com/purplewe" class="menu-item-link">
+                        GitHub
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </header>
+</div>
+    <main class="main">
+      <article class="post">
+    <div class="post-title">
+        <h2 class="title">gitlab部署及常见问题的处理</h2>
+    </div>
+    <div class="post-meta">
+        <span class="post-time">2019-11-19</span>
+    </div>
+    <div class="post-content">
+        <h1 id="以-docker-容器部署的-gitlab-常见的问题"><a href="#以-docker-容器部署的-gitlab-常见的问题" class="headerlink" title="以 docker 容器部署的 gitlab 常见的问题"></a>以 docker 容器部署的 gitlab 常见的问题</h1><h2 id="如何配置-smtp-邮件服务器"><a href="#如何配置-smtp-邮件服务器" class="headerlink" title="如何配置 smtp 邮件服务器"></a>如何配置 smtp 邮件服务器</h2><ul>
+<li><p><strong><em>首先得明白什么是 smtp ，为什么配置了 smtp 就可以正常接收发送邮件？</em></strong></p>
+</li>
+<li><p><strong><em>gitlab 中那些地方需要用到邮件？</em></strong></p>
+</li>
+<li><p><strong><em>如何配置gitlab</em></strong></p>
+</li>
+</ul>
+<ol>
+<li><p>SMTP 称为简单邮件传输协议 (Simple Mail Transfer Protocal)，是向用户提供高效、可靠的邮件传输。而 gitlab 配置了 smtp 实际上就是建立了 gitlab 与邮件服务器的连接，所以可以登录邮件服务器来发送和接收邮件。详细的解释可以参考邮件系统。</p>
+</li>
+<li><p>在 gitlab 中新注册一个用户时，需要通过邮件的连接来初始化密码，或者是提交一个 issue 得到反馈，或者是 push 代码，等等。</p>
+</li>
+<li><p>配置 gitlab 的过程也和简单</p>
+</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/gitlab/gitlab.rb </span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改相应的配置</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### Email Settings</span></span><br><span class="line"> gitlab_rails[<span class="string">&#x27;gitlab_email_enabled&#x27;</span>] = <span class="literal">true</span></span><br><span class="line"> gitlab_rails[<span class="string">&#x27;gitlab_email_from&#x27;</span>] = <span class="string">&#x27;*********@163.com&#x27;</span></span><br><span class="line"> gitlab_rails[<span class="string">&#x27;gitlab_email_display_name&#x27;</span>] = <span class="string">&#x27;custom&#x27;</span></span><br><span class="line"> gitlab_rails[<span class="string">&#x27;gitlab_email_reply_to&#x27;</span>] = <span class="string">&#x27;*********@163.com&#x27;</span></span><br><span class="line"> gitlab_rails[<span class="string">&#x27;gitlab_email_subject_suffix&#x27;</span>] = <span class="string">&#x27;[GITLAB]&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### GitLab user privileges</span></span><br><span class="line"><span class="comment"># gitlab_rails[&#x27;gitlab_default_can_create_group&#x27;] = true</span></span><br><span class="line"><span class="comment"># gitlab_rails[&#x27;gitlab_username_changing_enabled&#x27;] = true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### GitLab email server settings</span></span><br><span class="line"><span class="comment">###! Docs: https://docs.gitlab.com/omnibus/settings/smtp.html</span></span><br><span class="line"><span class="comment">###! ******Use smtp instead of sendmail/postfix.******</span></span><br><span class="line"></span><br><span class="line"> gitlab_rails[<span class="string">&#x27;smtp_enable&#x27;</span>] = <span class="literal">true</span></span><br><span class="line"> gitlab_rails[<span class="string">&#x27;smtp_address&#x27;</span>] = <span class="string">&quot;smtp.163.com&quot;</span></span><br><span class="line"> gitlab_rails[<span class="string">&#x27;smtp_port&#x27;</span>] = 25</span><br><span class="line"> gitlab_rails[<span class="string">&#x27;smtp_user_name&#x27;</span>] = <span class="string">&quot;*********@163.com&quot;</span></span><br><span class="line"> gitlab_rails[<span class="string">&#x27;smtp_password&#x27;</span>] = <span class="string">&quot;163授权码&quot;</span></span><br><span class="line"> gitlab_rails[<span class="string">&#x27;smtp_domain&#x27;</span>] = <span class="string">&quot;163.com&quot;</span></span><br><span class="line"> gitlab_rails[<span class="string">&#x27;smtp_authentication&#x27;</span>] = <span class="string">&quot;login&quot;</span></span><br><span class="line"> gitlab_rails[<span class="string">&#x27;smtp_enable_starttls_auto&#x27;</span>] = <span class="literal">true</span></span><br><span class="line"> gitlab_rails[<span class="string">&#x27;smtp_tls&#x27;</span>] = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使配置重新生效</span></span><br><span class="line">gitlab-ctl reconfigure</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试发送邮件</span></span><br><span class="line">gitlab-rails console</span><br><span class="line"></span><br><span class="line">Notify.test_email(<span class="string">&#x27;yourEmail&#x27;</span>, <span class="string">&#x27;Hello World&#x27;</span>, <span class="string">&#x27;This is a test message&#x27;</span>).deliver_now</span><br></pre></td></tr></table></figure>
+<p>Notify.test_email(‘xxx@qq.com’, ‘Hello World’, ‘This is a test message’).deliver_now<br>以上就是关于邮件的配置项，示例选用的163邮件服务器，也可以选用其它的。</p>
+<p><strong><em>注意的点</em></strong></p>
+<ul>
+<li><p>以上*<strong>****</strong>@163.com填写自己的邮箱。</p>
+</li>
+<li><p>密码指的是163授权码，该授权码是为了保护密码的安全性，当第三方的客户端登录163邮件服务器的时候需要输入的。</p>
+</li>
+<li><p>以上所有项生效需要将注释<code>#</code>打开。</p>
+</li>
+</ul>
+<p><strong><em>配置完以上的内容后访问初始化密码邮件中的连接会发现URL如图所示</em></strong></p>
+<p><img src="/.com//01.PNG" alt="waiting"></p>
+<p>gitlab 是 ruby 写的，是运行在 rails 上的，所以我们可以查看 gitlab-rails 的配置文件，会发现 host 对应的是该容器的 id，而不是该容器所在虚拟机的IP，所以这里需要修改为虚拟机的 IP。</p>
+<p><img src="/.com//02.PNG" alt="waiting"> </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># file&#x27;s path </span></span><br><span class="line"><span class="comment"># /opt/gitlab/embedded/service/gitlab-rails/config/gitlab.yml</span></span><br><span class="line"></span><br><span class="line">host: 192.168.203.130</span><br><span class="line"></span><br><span class="line">gitlab-ctl restart</span><br></pre></td></tr></table></figure>
+
+<p>这里有两个疑问？</p>
+<ul>
+<li>docker 是如何为容器分配 IP的，docker 容器的 IP 与 docker 宿主机的 IP 之间有什么关系？</li>
+</ul>
+<p>// TODO</p>
+<ul>
+<li><p>gitlab.rb 与 gitlab.yml 这两个配置文件各自的作用是什么？ </p>
+<p>通过查看这两个配置就能很快的发现他们的关系，gitlab.rb 是 ruby 的配置文件，而 gitlab.yml 是由 gitlab-ctl 管理的文件，这里说 gitlab.yml 中的手动修改将会被删除，如果要修改它得通过修改 gitlab.rb 然后 gitlab-ctl reconfigure 来重新生效配置。</p>
+</li>
+</ul>
+<p>gitlab.yml</p>
+<blockquote>
+<p>This file is managed by gitlab-ctl. Manual changes will be<br>erased! To change the contents below, edit /etc/gitlab/gitlab.rb<br>and run <code>sudo gitlab-ctl reconfigure</code>.</p>
+</blockquote>
+<p>gitlab.rb</p>
+<blockquote>
+<p>This file is generated during initial installation and <strong>is not</strong> modified<br>! during upgrades.</p>
+</blockquote>
+<h2 id="docker-部署的-gitlab-如何创建定时任务来备份数据"><a href="#docker-部署的-gitlab-如何创建定时任务来备份数据" class="headerlink" title="docker 部署的 gitlab 如何创建定时任务来备份数据"></a>docker 部署的 gitlab 如何创建定时任务来备份数据</h2><ul>
+<li><strong><em>备份恢复</em></strong></li>
+</ul>
+<p>以下两个文件需要手动备份，因为这两个文件包含诸如密码的敏感信息，所以备份文件比较好的方案是写一个定时任务通过 shell 脚本备份。</p>
+<p>以下为两个命令的使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># bakcup</span></span><br><span class="line">gitlab-rake gitlab:backup:create</span><br><span class="line"></span><br><span class="line">Warning: Your gitlab.rb and gitlab-secrets.json files contain sensitive data </span><br><span class="line">and are not included <span class="keyword">in</span> this backup. You will need to restore these files manually.</span><br><span class="line"></span><br><span class="line">/etc/gitlab/gitlab.rb   <span class="comment"># gitlab configure</span></span><br><span class="line">/etc/gitlab/gitlab-secrets.json   <span class="comment"># db secret</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># recovery</span></span><br><span class="line"><span class="built_in">cd</span> /var/opt/gitlab/backups</span><br><span class="line">gitlab-rake gitlab:backup:restore BACKUP=fileNo</span><br></pre></td></tr></table></figure>
+
+<p>备份的文件路径（该路径可以在 gitlab.rb 中修改）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab_rails[&#x27;backup_path&#x27;] = &quot;/var/opt/gitlab/backups&quot;</span><br></pre></td></tr></table></figure>
+
+<p>完整的备份 shell 脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">gitlab-rake gitlab:backup:create</span><br><span class="line"><span class="built_in">cd</span> /var/opt/gitlab/backups</span><br><span class="line">newDir=$(<span class="built_in">date</span> <span class="string">&#x27;+%Y%m%d-%H%M&#x27;</span> )</span><br><span class="line"><span class="built_in">mkdir</span> <span class="variable">$newDir</span></span><br><span class="line"></span><br><span class="line">filename=$(<span class="built_in">ls</span> -lt ./ | grep gitlab_backup | <span class="built_in">head</span> -n 1 |awk <span class="string">&#x27;&#123;print $9&#125;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;####################################&#x27;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;Latest backup file is =&gt; $filename&#x27;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;####################################&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">mv</span> ./<span class="variable">$filename</span> ./<span class="variable">$newDir</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cp</span> /etc/gitlab/gitlab.rb ./<span class="variable">$newDir</span></span><br><span class="line"><span class="built_in">cp</span> /etc/gitlab/gitlab-secrets.json ./<span class="variable">$newDir</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;Also you can find backups in /opt/docker_bak/gitlab/data/backups&#x27;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;Complete!&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>因为不知道两个 gitlab 的宿主机是怎样传输数据，所以恢复的脚本照着上面的逆着写就行了。还要注意一点<strong>恢复数据的 gitlab 版本需要与原 gitlab 一致</strong>。</p>
+<p><strong>gitlab升级</strong></p>
+<p>gitlab 升级主要的一点就是主版本的升级需要更新到该主版本的最新版本。</p>
+<ul>
+<li><strong><em>cron 表达式</em></strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">顺序</th>
+<th align="right">秒</th>
+<th align="right">分钟</th>
+<th align="right">小时</th>
+<th align="right">日期</th>
+<th align="right">月份</th>
+<th align="right">星期</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">取值</td>
+<td align="right">0-59</td>
+<td align="right">0-59</td>
+<td align="right">0-23</td>
+<td align="right">1-30(31)</td>
+<td align="right">1-12</td>
+<td align="right">1-7</td>
+</tr>
+<tr>
+<td align="center">特殊字符</td>
+<td align="right">, - * /</td>
+<td align="right">, - * /</td>
+<td align="right">, - * /</td>
+<td align="right">, - * / ? L W C</td>
+<td align="right">, - * /</td>
+<td align="right">, - * / L # C</td>
+</tr>
+</tbody></table>
+<p>启动服务</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service cron start</span><br></pre></td></tr></table></figure>
+
+<p>创建任务</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br><span class="line"></span><br><span class="line"><span class="comment"># m h  dom mon dow   command</span></span><br><span class="line">*/2 * * * * sh /backup.sh</span><br></pre></td></tr></table></figure>
+
+<p>查看任务</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -l</span><br></pre></td></tr></table></figure>
+    </div>
+</article>
+    </main>
+  </body>
+</html>

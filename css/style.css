@@ -1,0 +1,438 @@
+/**
+*定义变量
+*
+**/
+/**
+ *
+ * 消除浏览器样式
+ *
+* */
+html {
+  color: #000;
+  background: #fff;
+}
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+pre,
+code {
+  font-family: "Noto Serif SC";
+}
+pre {
+  color: #666;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f6f8fa;
+  border-radius: 3px;
+}
+code {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(27,31,35,0.05);
+  border-radius: 3px;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+fieldset,
+img {
+  border: 0;
+}
+caption,
+th {
+  text-align: left;
+}
+q:before,
+q:after {
+  content: '';
+}
+abbr,
+acronym {
+  border: 0;
+}
+@charset 'utf-8';
+* {
+  margin: 0px;
+  padding: 0px;
+}
+a {
+  text-decoration: none;
+  color: #000;
+/* 字体 */
+}
+li {
+  list-style: none;
+}
+input,
+img {
+  display: block;
+  box-shadow: 0 0 10px #555;
+  border-radius: 6px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  -webkit-box-shadow: 0 0 10px #555;
+  width: 100%;
+}
+body {
+  background-color: #fff;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+.main {
+  padding: 20px;
+  max-width: calc(800px - (30px * 2));
+  margin: 0 auto;
+}
+.header-wrapper {
+  border-top: 5px solid #008080;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  min-height: 56px;
+}
+.header-wrapper .header {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  max-width: calc(800px - (30px * 2));
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.header-wrapper .header .blog-title .logo {
+  color: #71289e;
+  font-size: 2em;
+  font-family: 'Permanent Marker', cursive;
+  text-decoration: none;
+}
+.site-nav {
+  float: right;
+  line-height: 56px;
+}
+.site-nav .menu-icon {
+  display: none;
+}
+.site-nav .iconfont {
+  display: none;
+}
+.site-nav .icon {
+  display: none;
+}
+.site-nav .page-link {
+  color: #71289e;
+  line-height: 1.8;
+}
+.site-nav .page-link:not(:first-child) {
+  margin-left: 20px;
+}
+.site-nav .page-link:hover {
+  color: #008080;
+}
+.site-nav .trigger {
+  display: flex;
+}
+@media screen and (max-width: 600px) {
+  .site-nav {
+    position: absolute;
+    top: 9px;
+    right: 30px;
+    background-color: #fdfdfd;
+    border: 1px solid #b4b4b4;
+    border-radius: 5px;
+    text-align: right;
+  }
+  .site-nav .menu-icon {
+    display: block;
+    float: right;
+    width: 36px;
+    height: 26px;
+    line-height: 0;
+    padding-top: 10px;
+    text-align: center;
+  }
+  .site-nav .menu-icon > svg {
+    width: 18px;
+    height: 15px;
+  }
+  .site-nav .menu-icon > svg path {
+    fill: #626262;
+  }
+  .site-nav .trigger {
+    clear: both;
+    display: none;
+  }
+  .site-nav:hover .trigger {
+    display: block;
+    position: relative;
+  }
+  .site-nav .menu-item {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .site-nav .menu-item a {
+    font-size: 1.2em;
+  }
+  .site-nav .page-link {
+    display: inline;
+  }
+  .site-nav .iconfont {
+    display: inline;
+    font-family: "iconfont" !important;
+    font-size: 1.5em;
+    font-style: normal;
+  }
+  .site-nav .icon {
+    display: inline;
+  }
+}
+.saySomething {
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 2em;
+}
+.posts>.post {
+  margin: 1em auto;
+  display: flex;
+  flex-direction: row;
+  margin-left: 30px;
+  font-weight: 500;
+}
+.main>.post {
+  flex-direction: column;
+}
+@media screen and (max-width: 600px) {
+  .post {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+.posts {
+  font-size: 1em;
+  font-weight: bolder;
+}
+.posts .post:first-chid {
+  margin-top: 0;
+}
+.posts .post-title {
+  font-size: 1em;
+}
+.posts .post-title .post-title-link {
+  color: #2a7ae2;
+  text-decoration: none;
+}
+.posts .post-title > a:visited {
+  color: #8e8e8e;
+}
+.posts .post-meta {
+  color: #bababa;
+}
+.page-nav {
+  color: #71289e;
+  float: right;
+}
+.page-nav a,
+.page-nav span {
+  margin-left: 5px;
+}
+article h1,
+article h2,
+article h3,
+article h4,
+article h5,
+article h6,
+article p,
+article blockquote,
+article ul,
+article ol,
+article dl,
+article figure,
+article .highlight {
+  margin-bottom: 0.2em;
+  font-weight: normal;
+}
+article blockquote {
+  background: #fbf4e6;
+  padding: 10px 20px;
+}
+article p {
+  text-align: justify !important;
+  margin-bottom: 1em;
+}
+article question {
+  font-size: 0.8em;
+  color: #f00;
+}
+article .post-title .title {
+  font-size: 1.8em;
+  font-weight: 500;
+}
+article .post-meta {
+  color: #828282;
+  margin-bottom: 20px;
+}
+article .post-content .highlight {
+  background: #f7f7f7;
+  margin: 20px 0;
+  padding: 15px;
+  overflow: auto;
+  font-size: $code-font-size;
+  line-height: $line-height-code-block;
+}
+article .post-content .highlight .gutter {
+  width: 30px;
+}
+article .post-content .highlight figcaption {
+  font-size: 0.85em;
+  color: #8e908c;
+  line-height: 1em;
+  margin-bottom: 1em;
+}
+article .post-content .highlight figcaption a {
+  float: right;
+}
+article .post-content .highlight .gutter pre {
+  text-align: right;
+  padding-right: 20px;
+}
+article .post-content .highlight .line {
+  height: 20px;
+}
+article .post-content .highlight pre .comment {
+  color: #8e908c;
+}
+article .post-content .highlight pre .variable,
+article .post-content .highlight pre .attribute,
+article .post-content .highlight pre .tag,
+article .post-content .highlight pre .regexp,
+article .post-content .highlight pre .ruby .constant,
+article .post-content .highlight pre .xml .tag .title,
+article .post-content .highlight pre .xml .pi,
+article .post-content .highlight pre .xml .doctype,
+article .post-content .highlight pre .html .doctype,
+article .post-content .highlight pre .css .id,
+article .post-content .highlight pre .css .class,
+article .post-content .highlight pre .css .pseudo {
+  color: #c82829;
+}
+article .post-content .highlight pre .number,
+article .post-content .highlight pre .preprocessor,
+article .post-content .highlight pre .built_in,
+article .post-content .highlight pre .literal,
+article .post-content .highlight pre .params,
+article .post-content .highlight pre .constant,
+article .post-content .highlight pre .command {
+  color: #f5871f;
+}
+article .post-content .highlight pre .ruby .class .title,
+article .post-content .highlight pre .css .rules .attribute {
+  color: #718c00;
+}
+article .post-content .highlight pre .string,
+article .post-content .highlight pre .value,
+article .post-content .highlight pre .inheritance,
+article .post-content .highlight pre .header,
+article .post-content .highlight pre .ruby .symbol,
+article .post-content .highlight pre .xml .cdata,
+article .post-content .highlight pre .special,
+article .post-content .highlight pre .number,
+article .post-content .highlight pre .formula {
+  color: #718c00;
+}
+article .post-content .highlight pre .title,
+article .post-content .highlight pre .css .hexcolor {
+  color: #3e999f;
+}
+article .post-content .highlight pre .function,
+article .post-content .highlight pre .python .decorator,
+article .post-content .highlight pre .python .title,
+article .post-content .highlight pre .ruby .function .title,
+article .post-content .highlight pre .ruby .title .keyword,
+article .post-content .highlight pre .perl .sub,
+article .post-content .highlight pre .javascript .title,
+article .post-content .highlight pre .coffeescript .title {
+  color: #4271ae;
+}
+article .post-content .highlight pre .keyword,
+article .post-content .highlight pre .javascript .function {
+  color: #8959a8;
+}
+article .post-content a {
+  text-decoration: none;
+  cursor: crosshair;
+  border-bottom: 1px dashed Red;
+  color: #00f;
+}
+article .post-content h1 {
+  font-size: 1.5em;
+  border-bottom: 1px solid #000;
+}
+article .post-content h2 {
+  font-size: 1.4em;
+  border-bottom: 1px solid #000;
+}
+article .post-content h3 {
+  font-size: 1.3em;
+  border-bottom: 1px solid #000;
+}
+article .post-content h4 {
+  font-weight: 600;
+  font-size: 1.2em;
+  border-bottom: 1px solid #000;
+}
+article .post-content h5 {
+  font-size: 1.1em;
+}
+article .post-content .headerlink {
+  width: 10px;
+}
+article .post-content .line {
+  font-family: "Noto Serif SC";
+}
+article .post-content > table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+article .post-content > table thead th {
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+}
+article .post-content > table tbody td {
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+}
+article .post-content > table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}

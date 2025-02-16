@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>
+        purplewe
+    </title>
+    <!-- TODO后续还是选用一个稳定的 -->
+    <link href="https://fonts.loli.net/css?family=Permanent+Marker|Roboto:500i|Lato:400" rel="stylesheet">
+    <link href='https://fonts.loli.net/css?family=Noto+Serif+SC:400' rel='stylesheet'>
+        
+<link rel="stylesheet" href="/css/style.css">
+
+        
+<link rel="stylesheet" href="/icon/iconfont.css">
+
+        
+<script src="/icon/iconfont.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+  <body>
+    <div class="header-wrapper">
+    <header class="header">
+        <div class="blog-title">
+            <a href="/" class="logo">
+                purplewe
+            </a>
+        </div>
+        <div class="site-nav">
+            <a href="#" class="menu-icon">
+                <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+            </a>
+            <div class="trigger">
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconhome1"></use>
+                    </svg>
+                    <a class="page-link" href="/" class="menu-item-link">
+                        Home
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconDog"></use>
+                    </svg>
+                    <a class="page-link" href="/about" class="menu-item-link">
+                        About
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconlove"></use>
+                    </svg>
+                    <a class="page-link" href="/love-journey" class="menu-item-link">
+                        Love Journey
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconGitHub"></use>
+                    </svg>
+                    <a class="page-link" target="_blank" rel="noopener" href="https://github.com/purplewe" class="menu-item-link">
+                        GitHub
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </header>
+</div>
+    <main class="main">
+      <article class="post">
+    <div class="post-title">
+        <h2 class="title">JVM基础：计算一个对象的大小</h2>
+    </div>
+    <div class="post-meta">
+        <span class="post-time">2021-09-20</span>
+    </div>
+    <div class="post-content">
+        <p>Java对象在内存中占用的空间分为三类：对象头、实例数据和对齐填充</p>
+<p><strong>对象头：</strong>对象头主要分为两部分：markword、klass，如果对象是一个数组，那么还有一块空间用来存储数组长度<br>1.markword：存储对象自身的一些标识数据，如哈希码、GC分代年龄、锁状态标志、偏向线程ID等信息，在64位系统下占8个字节，下图是markword在不同情况下存储的内容<br><img src="/.com//markword.png"><br>2.klass：储存指向这个类元信息的指针，占用8个字节，如开启指针压缩（默认开启-XX:+UseCompressedOops）则占用4个字节<br>3.数组长度：如果对象是数组，记录对象的大小，占用4个字节</p>
+<p><strong>实例数据</strong>：实例数据部分是对象真正存储的有效信息，也是在程序代码中所定义的各种类型的字段内容。</p>
+<p><strong>对齐填充</strong>：最后一块对齐填充空间并不是必然存在的，也没有特别的含义，它仅仅起着占位符的作用。这是由于HotSpot VM的自动内存管理系统要求对象起始地址必须是8字节的整数倍。</p>
+<p>空的String占用的空间大小计算：<br><img src="/.com//stringclass.png"><br>对象头（8 字节）+ 引用 (4 字节 )  + char 数组（16 字节）+ 1个 int（4字节）+ 1个long（8字节）= 40 字节，8的倍数不用填充</p>
+<p>非空String占用的空间为：40 + 2 * n（n为字符串长度）</p>
+
+    </div>
+</article>
+    </main>
+  </body>
+</html>

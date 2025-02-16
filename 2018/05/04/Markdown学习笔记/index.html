@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>
+        purplewe
+    </title>
+    <!-- TODO后续还是选用一个稳定的 -->
+    <link href="https://fonts.loli.net/css?family=Permanent+Marker|Roboto:500i|Lato:400" rel="stylesheet">
+    <link href='https://fonts.loli.net/css?family=Noto+Serif+SC:400' rel='stylesheet'>
+        
+<link rel="stylesheet" href="/css/style.css">
+
+        
+<link rel="stylesheet" href="/icon/iconfont.css">
+
+        
+<script src="/icon/iconfont.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+  <body>
+    <div class="header-wrapper">
+    <header class="header">
+        <div class="blog-title">
+            <a href="/" class="logo">
+                purplewe
+            </a>
+        </div>
+        <div class="site-nav">
+            <a href="#" class="menu-icon">
+                <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+            </a>
+            <div class="trigger">
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconhome1"></use>
+                    </svg>
+                    <a class="page-link" href="/" class="menu-item-link">
+                        Home
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconDog"></use>
+                    </svg>
+                    <a class="page-link" href="/about" class="menu-item-link">
+                        About
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconlove"></use>
+                    </svg>
+                    <a class="page-link" href="/love-journey" class="menu-item-link">
+                        Love Journey
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconGitHub"></use>
+                    </svg>
+                    <a class="page-link" target="_blank" rel="noopener" href="https://github.com/purplewe" class="menu-item-link">
+                        GitHub
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </header>
+</div>
+    <main class="main">
+      <article class="post">
+    <div class="post-title">
+        <h2 class="title">Markdown学习笔记</h2>
+    </div>
+    <div class="post-meta">
+        <span class="post-time">2018-05-04</span>
+    </div>
+    <div class="post-content">
+        <h3 id="Markdown简介"><a href="#Markdown简介" class="headerlink" title="Markdown简介"></a>Markdown简介</h3><p>Markdown是一种文本标记语言，通过一些简洁、常用的符号修饰，使得文本具有一定的格式。</p>
+<h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><h4 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h4><p>一行文字就是一个段落，如需换行，需要在两个段落之间隔一个空行</p>
+<h4 id="粗体、斜体"><a href="#粗体、斜体" class="headerlink" title="粗体、斜体"></a>粗体、斜体</h4><p>可以使用下划线_和星号*表示粗体和斜体</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">_这是斜体_</span><br><span class="line">*这也是斜体_</span><br><span class="line">**这是粗体**</span><br><span class="line">***这是粗体和斜体***</span><br></pre></td></tr></table></figure>
+
+<p>会被解释为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;em&gt;这是斜体&lt;/em&gt;</span><br><span class="line">&lt;em&gt;这也是斜体&lt;/em&gt;</span><br><span class="line">&lt;strong&gt;这是粗体&lt;/strong&gt;</span><br><span class="line">&lt;strong&gt;&lt;em&gt;这是粗体和斜体&lt;/em&gt;&lt;/strong&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h4><p>使用波浪线~表示删除线</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~这是删除线~</span><br></pre></td></tr></table></figure>
+
+<p>解释为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;strike&gt;这是删除线&lt;/strike&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h4><p>使用#表示标题，总共支持六级标题</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#h1#</span><br><span class="line"></span><br><span class="line">##h2##</span><br><span class="line"></span><br><span class="line">###h3###</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">######h6######</span><br></pre></td></tr></table></figure>
+
+<p>行尾可以加上任意数量#，可以不加，也可以加对称#</p>
+<h4 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h4><p>使用&gt;表示引用，并且可以嵌套</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;This is the first level of quoting.</span><br><span class="line">&gt;</span><br><span class="line">&gt;&gt;This is nested blockquote.</span><br><span class="line">&gt;</span><br><span class="line">&gt;Back ot the first level.</span><br></pre></td></tr></table></figure>
+
+<h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><h5 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h5><p>列表使用*、+、-作为列表标记</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">*pig</span><br><span class="line">*dog</span><br><span class="line">*cat</span><br><span class="line"></span><br><span class="line">+pig</span><br><span class="line">+dog</span><br><span class="line">+cat</span><br><span class="line"></span><br><span class="line">-pig</span><br><span class="line">-dog</span><br><span class="line">-cat</span><br></pre></td></tr></table></figure>
+
+<h5 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h5><p>有序列表直接数字接一个英文.，数字并不影响输出的HTML中的序号</p>
+<h4 id="内联代码"><a href="#内联代码" class="headerlink" title="内联代码"></a>内联代码</h4><p>使用反引号`来标记内联代码，会被解释为<code>&lt;code&gt;</code>标签，如果代码中有反引号请用两个反引号包裹</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">``aaa`bb`ccc``</span><br></pre></td></tr></table></figure>
+<h4 id="分隔线"><a href="#分隔线" class="headerlink" title="分隔线"></a>分隔线</h4><p>在一行中使用三个及以上的*、-、_来表示分隔线，行内不能有其他东西但是可以有空格</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">*******</span><br><span class="line">* *** *****</span><br><span class="line">-------------</span><br><span class="line">_____________</span><br></pre></td></tr></table></figure>
+
+<h4 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h4><p>使用<code>[char](url)</code>来表示一个来表示一个链接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[江西](http://www.jiangxi.gov.cn/)`</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="http://www.jiangxi.gov.cn/">江西</a></p>
+<h4 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h4><p>插入图片</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![Alt text](&#x27;url&#x27; &#x27;description&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>插入带连接的图片</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[![Alt text](&#x27;picURI&#x27; &#x27;description&#x27;)](url)&#123;:target=&quot;_blank&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="自动连接"><a href="#自动连接" class="headerlink" title="自动连接"></a>自动连接</h4><p>就是指链接地址与名字重复，可以用**&lt;&gt;**将其简化</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;http://example.com&gt;</span><br><span class="line"></span><br><span class="line">相当于</span><br><span class="line"></span><br><span class="line">[http://example.com](http://example.com)</span><br></pre></td></tr></table></figure>
+
+<h4 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h4><p>以下字符添加反斜杠即可转义</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">\</span><br><span class="line">`</span><br><span class="line">*</span><br><span class="line">_</span><br><span class="line">&#123;&#125;</span><br><span class="line">[]</span><br><span class="line">()</span><br><span class="line">#</span><br><span class="line">+</span><br><span class="line">-</span><br><span class="line">.</span><br><span class="line">!</span><br></pre></td></tr></table></figure>
+
+<h4 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h4><p><code>:</code>向哪边就向哪边对齐（默认居左）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">|  a  |  b  |  c  |</span><br><span class="line">|:---:|:--- | ---:|</span><br><span class="line">| 居中 | 左对齐 | 右对齐 |</span><br><span class="line">|=====|=====|=====|</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">a</th>
+<th align="left">b</th>
+<th align="right">c</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">居中</td>
+<td align="left">左对齐</td>
+<td align="right">右对齐</td>
+</tr>
+<tr>
+<td align="center">=</td>
+<td align="left">=</td>
+<td align="right">=</td>
+</tr>
+</tbody></table>
+<h4 id="内联HTML"><a href="#内联HTML" class="headerlink" title="内联HTML"></a>内联HTML</h4><p>html原样输出</p>
+<h4 id="表情代码"><a href="#表情代码" class="headerlink" title="表情代码"></a>表情代码</h4><p>两个<code>:</code>中间引入表情代码</p>
+<p>:smile:</p>
+
+    </div>
+</article>
+    </main>
+  </body>
+</html>

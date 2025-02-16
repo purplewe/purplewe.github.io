@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>
+        purplewe
+    </title>
+    <!-- TODO后续还是选用一个稳定的 -->
+    <link href="https://fonts.loli.net/css?family=Permanent+Marker|Roboto:500i|Lato:400" rel="stylesheet">
+    <link href='https://fonts.loli.net/css?family=Noto+Serif+SC:400' rel='stylesheet'>
+        
+<link rel="stylesheet" href="/css/style.css">
+
+        
+<link rel="stylesheet" href="/icon/iconfont.css">
+
+        
+<script src="/icon/iconfont.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+  <body>
+    <div class="header-wrapper">
+    <header class="header">
+        <div class="blog-title">
+            <a href="/" class="logo">
+                purplewe
+            </a>
+        </div>
+        <div class="site-nav">
+            <a href="#" class="menu-icon">
+                <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+            </a>
+            <div class="trigger">
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconhome1"></use>
+                    </svg>
+                    <a class="page-link" href="/" class="menu-item-link">
+                        Home
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconDog"></use>
+                    </svg>
+                    <a class="page-link" href="/about" class="menu-item-link">
+                        About
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconlove"></use>
+                    </svg>
+                    <a class="page-link" href="/love-journey" class="menu-item-link">
+                        Love Journey
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconGitHub"></use>
+                    </svg>
+                    <a class="page-link" target="_blank" rel="noopener" href="https://github.com/purplewe" class="menu-item-link">
+                        GitHub
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </header>
+</div>
+    <main class="main">
+      <article class="post">
+    <div class="post-title">
+        <h2 class="title">对tomcat的学习</h2>
+    </div>
+    <div class="post-meta">
+        <span class="post-time">2019-06-30</span>
+    </div>
+    <div class="post-content">
+        <h3 id="1-tomcat架构图"><a href="#1-tomcat架构图" class="headerlink" title="1. tomcat架构图"></a>1. tomcat架构图</h3><p><img src="/.com//Architecture.png" alt="Please Wait"></p>
+<p>tomcat的顶层架构如上图所示，可以看到有server、service、connerctor、container四个组件，那么这四个组件又有什么作用呢？</p>
+<p><strong>server：</strong></p>
+<p>Server向客户端提供服务，并且服务器可以start或stop。</p>
+<p>缺点：如果需要该服务器支持多种网络协议，就很难扩展，因此改进如下：</p>
+<p><strong>connector和container</strong></p>
+<p>将容器拆分成Connector以及Container，Connector用于和客户端连接，可以扩展支持多种协议，建立连接之后将socket交给Container处理。</p>
+<p><strong>Service</strong></p>
+<p>通过service统一connector和container的映射关系</p>
+<p><strong>Host</strong></p>
+<p>在一个主机下支持多种域名服务</p>
+<p><strong>Context</strong></p>
+<p>可以部署多个应用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">connector支持的运行模式？</span><br><span class="line"></span><br><span class="line">- BIO：Java原生IO技术，同步阻塞IO</span><br><span class="line"></span><br><span class="line">- NIO：Jdk1.4，非阻塞IO</span><br><span class="line"></span><br><span class="line">- APR</span><br><span class="line"></span><br><span class="line">支持http、https、AJP等协议</span><br><span class="line"></span><br><span class="line">AJP协议适用于web容器和web容器的连接</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-tomcat目录结构"><a href="#2-tomcat目录结构" class="headerlink" title="2. tomcat目录结构"></a>2. tomcat目录结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/bin：脚本文件目录。</span><br><span class="line"> /common/lib：存放所有web项目都可以访问的公共jar包（使用Common类加载器加载）。</span><br><span class="line"> /conf：存放配置文件，最重要的是server.xml。</span><br><span class="line"> /logs：存放日志文件。</span><br><span class="line"> /server/webapps：来管理Tomcat-web服务用的。仅对TOMCAT可见，对所有的WEB APP都不可见（使用Catalina类加载器加载）。</span><br><span class="line"> /shared/lib：仅对所有WEB APP可见，对TOMCAT不可见（使用Shared类加载器加载）。</span><br><span class="line"> /temp：Tomcat运行时候存放临时文件用的。</span><br><span class="line"> /webapps：web应用发布目录。</span><br><span class="line"> /work：Tomcat把各种由jsp生成的servlet文件放在这个目录下。删除后，启动时会自动创建。</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-tomcat优化？"><a href="#3-tomcat优化？" class="headerlink" title="3. tomcat优化？"></a>3. tomcat优化？</h3><p><strong>基础调优</strong></p>
+<p>适当调整tomcat的最大线程数、最大空闲线程数、连接超时时间</p>
+<p>开启http压缩，客户端请求静态文件时，服务端将静态文件压缩发送至客户端，再有客户端浏览器进行解压</p>
+<p><strong>内存调优</strong></p>
+<p>-Xmx</p>
+<p>-Xms</p>
+<p>-Xmn设置年轻代大小</p>
+<p>-Xss设置栈大小</p>
+<p>-XX:NewRatio=num设置年轻代与老年代的比例</p>
+<p>-XX:SurvivorRatio=num设置survivor与eden区的比例</p>
+<p>-XX:MaxPermSize=num(M)设置永久区的大小</p>
+<p>-XX:MetaspaceSize=200m;-XX:MaxMetaspaceSize=256m;jdk1.8后使用hotspot虚拟机方法区的实现变为元空间</p>
+<p><strong>垃圾回收策略调优</strong></p>
+<p>搭配不同的垃圾回收器和垃圾回收算法</p>
+<p>有空分析一下tomcat的启动脚本文件</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> &quot;CATALINA_HOME=<span class="variable">%CURRENT_DIR%</span>&quot;</span><br><span class="line"><span class="built_in">set</span> &quot;EXECUTABLE=<span class="variable">%CATALINA_HOME%</span>\bin\catalina.bat&quot;</span><br><span class="line"><span class="keyword">call</span> &quot;<span class="variable">%EXECUTABLE%</span>&quot; <span class="built_in">start</span> <span class="variable">%CMD_LINE_ARGS%</span> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    </div>
+</article>
+    </main>
+  </body>
+</html>

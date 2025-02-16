@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>
+        purplewe
+    </title>
+    <!-- TODO后续还是选用一个稳定的 -->
+    <link href="https://fonts.loli.net/css?family=Permanent+Marker|Roboto:500i|Lato:400" rel="stylesheet">
+    <link href='https://fonts.loli.net/css?family=Noto+Serif+SC:400' rel='stylesheet'>
+        
+<link rel="stylesheet" href="/css/style.css">
+
+        
+<link rel="stylesheet" href="/icon/iconfont.css">
+
+        
+<script src="/icon/iconfont.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+  <body>
+    <div class="header-wrapper">
+    <header class="header">
+        <div class="blog-title">
+            <a href="/" class="logo">
+                purplewe
+            </a>
+        </div>
+        <div class="site-nav">
+            <a href="#" class="menu-icon">
+                <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+            </a>
+            <div class="trigger">
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconhome1"></use>
+                    </svg>
+                    <a class="page-link" href="/" class="menu-item-link">
+                        Home
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconDog"></use>
+                    </svg>
+                    <a class="page-link" href="/about" class="menu-item-link">
+                        About
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconlove"></use>
+                    </svg>
+                    <a class="page-link" href="/love-journey" class="menu-item-link">
+                        Love Journey
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconGitHub"></use>
+                    </svg>
+                    <a class="page-link" target="_blank" rel="noopener" href="https://github.com/purplewe" class="menu-item-link">
+                        GitHub
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </header>
+</div>
+    <main class="main">
+      <article class="post">
+    <div class="post-title">
+        <h2 class="title">Kafka学习之路：初识</h2>
+    </div>
+    <div class="post-meta">
+        <span class="post-time">2020-12-05</span>
+    </div>
+    <div class="post-content">
+        <p>已经记不得什么时候听说Kafka这个名词了，只是脑海里一直有这么个东西。前不久公司领导需要做一个统一日志打印日志的SDK，收集日志用作分析，于是慢慢开始接触Kafka。以下系列文章将记录我学习Kafka的一个过程，内容主要来于《深入理解Kafka：核心设计与实践原理》、各个博客的分享以及自己的一些思考，也不知道能坚持多久。</p>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>Kafka最开始是有LinkedIn公司用Scala语言开发的一个多分区、多副本且基于zookeeper协调的分布式消息系统，现已被贡献给Apache基金会。目前Kafka被定位为一个分布式流式处理平台，它以高吞吐、可持久化、可水平扩展、支持流数据处理等多种特性被广泛使用。</p>
+<p><question>多分区、多副本具有什么优势，什么是分布式消息系统？</question><br><question>Kafka是如何做到高吞吐、可持久化的以及如何水平扩展？</question></p>
+<h4 id="Kafka的三大角色"><a href="#Kafka的三大角色" class="headerlink" title="Kafka的三大角色"></a>Kafka的三大角色</h4><ul>
+<li><strong>1. 消息系统：</strong>Kafka也和常用的消息系统（中间件）一样具备<strong>系统解耦、冗余存储、流量削峰、缓冲、异步通信、可扩展、可恢复</strong>等功能，除此之外Kafka还提供了大多数消息系统难以实现的消息<strong>顺序性</strong>保障以及<strong>回溯消费</strong>的功能。</li>
+<li><strong>2. 存储系统：</strong>Kafka将消息数据持久化到磁盘，另外还有多副本机制，相比于基于内存的存储系统而言，有效地降低了数据丢失的风险。通过修改Kafka数据保留策略，设置为永久或启用主题的日志压缩功能。</li>
+<li><strong>3. 流式处理平台：</strong>Kafka为流式处理框架提供了可靠的数据来源，还提供了一个完整的流式处理类库（暂时没接触过流式处理相关的知识）。</li>
+</ul>
+<h4 id="消息系统"><a href="#消息系统" class="headerlink" title="消息系统"></a>消息系统</h4><p>一个消息系统负责将数据从一个应用传递到另外一个应用，应用只需关注于数据，无需关注数据在两个或多个应用间是如何传递的。分布式消息传递基于可靠的消息队列，在客户端应用和消息系统之间异步传递消息。有两种主要的消息传递模式：点对点传递模式、发布-订阅模式。大部分的消息系统选用发布-订阅模式。Kafka就是一种发布-订阅模式。</p>
+<ul>
+<li><p><strong>点对点：</strong>在点对点消息系统中，消息持久化到一个队列中。此时，将有一个或多个消费者消费队列中的数据。但是一条消息只能被消费一次。当一个消费者消费了队列中的某条数据之后，该条数据则从消息队列中删除。该模式即使有多个消费者同时消费数据，也能保证数据处理的顺序。</p>
+</li>
+<li><p><strong>发布订阅：</strong>在发布-订阅消息系统中，消息被持久化到一个topic中。与点对点消息系统不同的是，消费者可以订阅一个或多个topic，消费者可以消费该topic中所有的数据，同一条数据可以被多个消费者消费，数据被消费后不会立马删除。在发布-订阅消息系统中，消息的生产者称为发布者，消费者称为订阅者。</p>
+</li>
+</ul>
+<h4 id="常用消息系统对比"><a href="#常用消息系统对比" class="headerlink" title="常用消息系统对比"></a>常用消息系统对比</h4><p>先对不同的消息中间件有个印象，大致明白什么样的场景应该采用哪种消息队列。</p>
+<p><strong>RabbitMQ：</strong>RabbitMQ是使用Erlang编写的一个开源的消息队列，本身支持很多的协议：AMQP，XMPP, SMTP, STOMP，也正因如此，它<strong>非常重量级，更适合于企业级的开发</strong>。同时实现了Broker构架，这意味着消息在发送给客户端时先在中心队列排队。对路由，负载均衡或者数据持久化都有很好的支持。</p>
+<p><strong>Redis：</strong>Redis是一个基于Key-Value对的NoSQL数据库，开发维护很活跃。虽然它是一个Key-Value数据库存储系统，但它本身支持MQ功能，所以完全可以当做一个轻量级的队列服务来使用。入队时，当数据比较小时Redis的性能要高于RabbitMQ，而如果数据大小超过了10K，Redis则慢的无法忍受；出队时，无论数据大小，Redis都表现出非常好的性能，而RabbitMQ的出队性能则远低于Redis。</p>
+<p><strong>ZeroMQ：</strong>ZeroMQ号称最快的消息队列系统，尤其针对大吞吐量的需求场景。ZeroMQ能够实现RabbitMQ不擅长的高级/复杂的队列，但是开发人员需要自己组合多种技术框架，技术上的复杂度是对这MQ能够应用成功的挑战。</p>
+<p><strong>ActiveMQ：</strong>ActiveMQ是Apache下的一个子项目。 类似于ZeroMQ，它能够以代理人和点对点的技术实现队列。同时类似于RabbitMQ，它少量代码就可以高效地实现高级应用场景。</p>
+<p><strong>Kafka/Jafka：</strong>Kafka是Apache下的一个子项目，是一个高性能跨语言分布式发布/订阅消息队列系统，而Jafka是在Kafka之上孵化而来的，即Kafka的一个升级版。具有以下特性：快速持久化，可以在O(1)的系统开销下进行消息持久化；高吞吐，在一台普通的服务器上既可以达到10W/s的吞吐速率；完全的分布式系统，Broker、Producer、Consumer都原生自动支持分布式，自动实现负载均衡；支持Hadoop数据并行加载，对于像Hadoop的一样的日志数据和离线分析系统，但又要求实时处理的限制，这是一个可行的解决方案。Kafka通过Hadoop的并行加载机制统一了在线和离线的消息处理。Apache Kafka相对于ActiveMQ是一个非常轻量级的消息系统，除了性能非常好之外，还是一个工作良好的分布式系统。</p>
+<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>一个典型的Kafka体系结构包括若干个Producer、若干Broker、若干Consumer，以及一个Zookeeper集群（2.8.0版本中的Kafka也可以不需要zookeeper）。其中Zookeeper是Kafka用来负责集群元数据管理、控制器的选举等操作。Producer将消息发动到Broker，Broker负责将收到的消息存储到磁盘中，Consumer负责从Broker订阅并消费消息。</p>
+<p><question>Kafka中的元数据是什么?</question><br><question>控制器的作用?</question></p>
+<p><strong>Producer：</strong>生产者，负责创建消息并发送到Kafka中</p>
+<p><strong>Consumer：</strong>消费者，负责接收Kafka中的消息，并进行其它业务处理</p>
+<p><strong>Broker：</strong>服务代理节点，可以看作一个独立的Kafka服务实例</p>
+<p><strong>Topic</strong>主题，Kafka中的消息以主题为单位进行归类，逻辑上可以理解为一个队列，生产者将消息发布到指定的topic中，消费者订阅指定的topic并消费消息</p>
+<p><strong>Partition：</strong>分区，一个主题可以分为多个分区，一个分区只属于一个主题，分区在物理结构层面可以理解为一个可追加的日志文件，增加分区数可以提升消息消费的效率，相当于水平扩展</p>
+<p><strong>offset：</strong>偏移量，offset是消息在分区中的唯一标识，Kafka通过它来保证消息在分区内的顺序性，不过offset不跨越分区，也就是说，Kafka保证分区上的消息是有序的并不保证主题是有序的（后面有些消息需要保证有序性的时候就可以只为topic创建一个分区）</p>
+<p><strong>Replica：</strong>副本，Kafka为分区引入了多副本机制，可以提升容灾能力。同一个分区的不同副本保存的是相同的消息，副本之间是一主多从的关系，leader副本负责处理消息的读写，follower副本只负责玉leader副本同步，当leader副本出现故障，从follower副本中重新选举新的leader副本出来</p>
+<p><strong>AR：</strong>Assigned Replicas，分区中所有副本统称为AR</p>
+<p><strong>ISR：</strong>所有与leader副本保持一定程度同步（这个程度是可配置）的副本（包括leader副本在内）组成ISR</p>
+<p><strong>OSR：</strong>与leader副本同步滞后过多的副本组成OSR</p>
+<p>AR=ISR+OSR，正常情况下所有follower副本都应与leader副本保持一定程度的同步，AR=ISR</p>
+<p><strong>HW：</strong>表示在leader副本上消费者能拉取的消息的最大offset-1</p>
+<p><strong>LEO：</strong>Log End Offset，表示当前日志文件中下一条待写入消息的offset</p>
+
+    </div>
+</article>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>
+        purplewe
+    </title>
+    <!-- TODO后续还是选用一个稳定的 -->
+    <link href="https://fonts.loli.net/css?family=Permanent+Marker|Roboto:500i|Lato:400" rel="stylesheet">
+    <link href='https://fonts.loli.net/css?family=Noto+Serif+SC:400' rel='stylesheet'>
+        
+<link rel="stylesheet" href="/css/style.css">
+
+        
+<link rel="stylesheet" href="/icon/iconfont.css">
+
+        
+<script src="/icon/iconfont.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+  <body>
+    <div class="header-wrapper">
+    <header class="header">
+        <div class="blog-title">
+            <a href="/" class="logo">
+                purplewe
+            </a>
+        </div>
+        <div class="site-nav">
+            <a href="#" class="menu-icon">
+                <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+            </a>
+            <div class="trigger">
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconhome1"></use>
+                    </svg>
+                    <a class="page-link" href="/" class="menu-item-link">
+                        Home
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconDog"></use>
+                    </svg>
+                    <a class="page-link" href="/about" class="menu-item-link">
+                        About
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconlove"></use>
+                    </svg>
+                    <a class="page-link" href="/love-journey" class="menu-item-link">
+                        Love Journey
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconGitHub"></use>
+                    </svg>
+                    <a class="page-link" target="_blank" rel="noopener" href="https://github.com/purplewe" class="menu-item-link">
+                        GitHub
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </header>
+</div>
+    <main class="main">
+      <article class="post">
+    <div class="post-title">
+        <h2 class="title">每天一点es6</h2>
+    </div>
+    <div class="post-meta">
+        <span class="post-time">2019-03-28</span>
+    </div>
+    <div class="post-content">
+        <h3 id="块级作用域"><a href="#块级作用域" class="headerlink" title="块级作用域"></a>块级作用域</h3><h4 id="为什么需要块级作用域"><a href="#为什么需要块级作用域" class="headerlink" title="为什么需要块级作用域"></a>为什么需要块级作用域</h4><p>es5中只有块级作用域和函数作用域，这会产生某些不合理的场景。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">&#x27;test&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a);</span><br><span class="line">    <span class="keyword">if</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">var</span> a = <span class="string">&#x27;test1&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">f</span>() <span class="comment">// undefined    </span></span><br></pre></td></tr></table></figure>
+<p>本来调用f()希望得到的结果是test,但是由于函数f内的a变量提升到该函数的顶部，导致输出的a为undefined。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)&#123;&#125;</span><br><span class="line">    i <span class="comment">//10</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>循环中计数的循环变量由于没有消失一直存在f()函数作用域里，但是该变量本应该只存在于循环中，所以可以理解为该变量的作用域被泄露了。</p>
+<h4 id="es6中的块级作用域"><a href="#es6中的块级作用域" class="headerlink" title="es6中的块级作用域"></a>es6中的块级作用域</h4><p>es6中的let的出现实际为JavaScript增加了块级作用域</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f1</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> n = <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> n = <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(n) <span class="comment">// 5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这表明外层块级作用域不受内层块级作用域的影响。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">...</span><br><span class="line">&#125;())</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>块级作用域的出现实际上使得自执行函数不再必要了。</p>
+<h3 id="let命令"><a href="#let命令" class="headerlink" title="let命令"></a>let命令</h3><p>let命令：let命令用来声明的变量，其声明的变量只在其所在的代码块中有效。</p>
+<h4 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h4><p>es5中的作用域只有函数作用域和全局作用域，在函数体中使用var定义的变量，会被提到函数开始处进行定义，作用域为整个函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    a[i] = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(i);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">a[<span class="number">6</span>](); <span class="comment">// 10</span></span><br><span class="line">i; <span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
+<p>因为for循环并不是一个函数体，所以for循环中定义的变量的作用域是其所在的函数体，所以这里的i的输出是10，而a<a href>6</a>的输出为10是因为i一直保存的是值引用，所以显示10.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">     a[i] = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(i);</span><br><span class="line">     &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">a[<span class="number">6</span>](); <span class="comment">// 6</span></span><br></pre></td></tr></table></figure>
+<p>因为let声明的变量只在块级作用域中生效，每一个循环都会产生一个新的作用域，每次循环就声明一个新的变量i，那么当前循环中i的值是如何确定的？原因是有一个中间变量__status = {i}用来存储当前的循环变量。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++)&#123;</span><br><span class="line">    <span class="keyword">let</span> i = <span class="string">&#x27;abc&#x27;</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// abc</span></span><br><span class="line"><span class="comment">// abc</span></span><br><span class="line"><span class="comment">// abc</span></span><br></pre></td></tr></table></figure>
+<p>实际上在这里,整个for循环有两个作用域，设置循环变量的部分为父作用域，循环体那部分为子作用域。因为这个循环执行了三次，父作用域没有受到子作用域的影响。</p>
+<h4 id="不存在变量提升"><a href="#不存在变量提升" class="headerlink" title="不存在变量提升"></a>不存在变量提升</h4><p>变量提升：指的是变量可以在变量声明前使用该变量，但是会输出undefined。</p>
+<p>为了纠正这种情况，使用let声明的变量不可以在变量声明前使用，否则会报错。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// var 的情况</span><br><span class="line">console.log(foo); // 输出undefined</span><br><span class="line">var foo = 2;</span><br><span class="line"></span><br><span class="line">// let 的情况</span><br><span class="line">console.log(bar); // 报错ReferenceError</span><br><span class="line">let bar = 2;</span><br></pre></td></tr></table></figure>
+
+<h4 id="暂时性死区"><a href="#暂时性死区" class="headerlink" title="暂时性死区"></a>暂时性死区</h4><p>在代码块内，使用let命令声明变量之前，该变量都是不可用的，该现象称为“暂时性死区”(temporal dead zone)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">x = &#x27;a&#x27;;</span><br><span class="line">let x = &#x27;b&#x27;;</span><br><span class="line">会报错：该变量未定义</span><br><span class="line"></span><br><span class="line">typeof x; //报错</span><br><span class="line">let x = &#x27;a&#x27;;</span><br><span class="line">typeof undeclear_var // undefined</span><br><span class="line">会使得typeof操作符的使用不再安全</span><br><span class="line"></span><br><span class="line">var x = x //undefined</span><br><span class="line">let x = x //报错</span><br></pre></td></tr></table></figure>
+
+<h4 id="不允许重复声明"><a href="#不允许重复声明" class="headerlink" title="不允许重复声明"></a>不允许重复声明</h4><p>在同一块级作用域中不允许重复声明变量。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function f(args)&#123;</span><br><span class="line">    let args;</span><br><span class="line">&#125; //报错</span><br><span class="line"></span><br><span class="line">function f1(args)&#123;</span><br><span class="line">    &#123;</span><br><span class="line">    let args;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; //不报错</span><br></pre></td></tr></table></figure>
+
+<h3 id="const命令"><a href="#const命令" class="headerlink" title="const命令"></a>const命令</h3><p>const声明的变量指向的地址所保存的数据不可变，一旦声明后就不可以修改，一旦声明就要初始化。</p>
+<p>const与let一样，只在声明的块级作用域中有效，并且声明的常量也不可以提升，同样存在暂时性死区。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">const a = &#123;&#125;;</span><br><span class="line">a.property = 1; //不报错</span><br><span class="line">a = &#123;&#125;; //报错 </span><br><span class="line">只要保证a变量指向地址保存的数据不改变就不会报错</span><br><span class="line"></span><br><span class="line">function f(obj)&#123;</span><br><span class="line">    Object.freeze(obj);</span><br><span class="line">    Object.keys(obj).forEach((key) =&gt; &#123;</span><br><span class="line">        if(typeof obj[key] === &#x27;object&#x27;)&#123;</span><br><span class="line">            f(obj[key]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="变量的解构赋值"><a href="#变量的解构赋值" class="headerlink" title="变量的解构赋值"></a>变量的解构赋值</h3><p>实际上可以看作一种模式匹配。</p>
+<h4 id="数组的解构赋值"><a href="#数组的解构赋值" class="headerlink" title="数组的解构赋值"></a>数组的解构赋值</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">let [foo] = [];</span><br><span class="line">let [bar, foo] = [1];</span><br><span class="line">foo // undefined</span><br><span class="line">解构不成功就会返回undefined。</span><br><span class="line"></span><br><span class="line">let [x, y] = [1, 2, 3];</span><br><span class="line">不完全解构。</span><br><span class="line"></span><br><span class="line">let [foo] = 1;</span><br><span class="line">let [foo] = false;</span><br><span class="line">let [foo] = NaN;</span><br><span class="line">let [foo] = undefined;</span><br><span class="line">let [foo] = null;</span><br><span class="line">let [foo] = &#123;&#125;;</span><br><span class="line">会报错，因为等号右边是不可便利的结构。</span><br><span class="line"></span><br><span class="line">let [x, y = &#x27;b&#x27;] = [&#x27;a&#x27;, undefined];</span><br><span class="line">// x=&#x27;a&#x27;, y=&#x27;b&#x27; 只有对应的位置严格等于(===)undefined，默认值才会生效。</span><br></pre></td></tr></table></figure>
+
+<h4 id="对象的解构赋值"><a href="#对象的解构赋值" class="headerlink" title="对象的解构赋值"></a>对象的解构赋值</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">let &#123;foo, bar&#125; = &#123;foo: &quot;aaa&quot;, bar: &quot;bbb&quot;&#125;;</span><br><span class="line">let &#123;foo: foo, bar: bar&#125; = &#123;foo: &quot;aaa&quot;, bar: &quot;bbb&quot;&#125;;</span><br><span class="line">let &#123;foo: baz&#125; = &#123;foo: &quot;aaa&quot;, bar: &quot;bbb&quot;&#125; // baz-&gt;&quot;aaa&quot; foo-&gt;报错</span><br><span class="line">let &#123;foo&#125; = &#123;bar: &quot;bbb&#x27;&#125; //解构失败 foo-&gt;undefined</span><br><span class="line">解构赋值的键其实是匹配的模式，而值才是指向真正的值。</span><br><span class="line"></span><br><span class="line">var &#123;x = 3&#125; = &#123;x: undefined&#125;;</span><br><span class="line">x // 3</span><br><span class="line">var &#123;x = 3&#125; = &#123;x: null&#125;;</span><br><span class="line">x // null</span><br><span class="line">默认值的生效条件是对应匹配的值为undefined。</span><br><span class="line"></span><br><span class="line">let arr = [1, 2, 3];</span><br><span class="line">let &#123;0: first, [arr.length - 1]: last&#125; = arr;</span><br><span class="line">first // 1</span><br><span class="line">last // 3</span><br><span class="line">数组可以进行对象属性的结构，**数组本质是特殊的对象**</span><br></pre></td></tr></table></figure>
+
+<h4 id="字符串的解构赋值"><a href="#字符串的解构赋值" class="headerlink" title="字符串的解构赋值"></a>字符串的解构赋值</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let &#123;length: len&#125; = &#x27;hello&#x27;;</span><br><span class="line">len //5</span><br><span class="line">String类中有个length属性与之匹配。</span><br></pre></td></tr></table></figure>
+<h4 id="数值和布尔值的解构赋值"><a href="#数值和布尔值的解构赋值" class="headerlink" title="数值和布尔值的解构赋值"></a>数值和布尔值的解构赋值</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let &#123;toString: s&#125; = 123;</span><br><span class="line">s === Number.prototype.toString // true</span><br><span class="line"></span><br><span class="line">let &#123;toString: s&#125; = true;</span><br><span class="line">s === Boolean.prototype.toString // true</span><br><span class="line">如果等号右边是数值或者布尔值，则会转为包装对象</span><br><span class="line"></span><br><span class="line">let &#123; prop: x &#125; = undefined; // TypeError</span><br><span class="line">let &#123; prop: y &#125; = null; // TypeError</span><br><span class="line">undefined和null无法转为对象。</span><br></pre></td></tr></table></figure>
+
+<h4 id="函数参数的解构赋值"><a href="#函数参数的解构赋值" class="headerlink" title="函数参数的解构赋值"></a>函数参数的解构赋值</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function f(&#123;x = 0, y = 0&#125; = &#123;&#125;) &#123;</span><br><span class="line">    return [x, y];</span><br><span class="line">&#125;</span><br><span class="line">f(&#123;x: 3, y: 3&#125;); // [3, 8]</span><br><span class="line">f(&#123;x: 3&#125;); // [3, 0]</span><br><span class="line">f(&#123;&#125;); // [0, 0]</span><br><span class="line">f(); // [0, 0]</span><br><span class="line"></span><br><span class="line">function f(&#123;x, y&#125; = &#123;x: 0, y: 0&#125;) &#123;</span><br><span class="line">    return [x, y];</span><br><span class="line">&#125;</span><br><span class="line">f(&#123;x: 3, y: 3&#125;); // [3, 8]</span><br><span class="line">f(&#123;x: 3&#125;); // [3, undefined]</span><br><span class="line">f(&#123;&#125;); // [undefined, undefined]</span><br><span class="line">f(); // [0, 0]</span><br><span class="line">注意上面两种情况的比较。</span><br><span class="line"></span><br><span class="line">[1, undefined, 3].map((x = &#x27;yes&#x27;) =&gt; x);</span><br><span class="line">// [1, &#x27;yes&#x27;, 3]</span><br></pre></td></tr></table></figure>
+<h3 id="函数的扩展"><a href="#函数的扩展" class="headerlink" title="函数的扩展"></a>函数的扩展</h3><h3 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h3><h4 id="点击托盘图标停止录制定义"><a href="#点击托盘图标停止录制定义" class="headerlink" title="点击托盘图标停止录制定义"></a>点击托盘图标停止录制定义</h4><h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4>
+    </div>
+</article>
+    </main>
+  </body>
+</html>

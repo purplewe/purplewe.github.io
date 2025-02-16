@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>江江&章章的恋爱之旅</title>
+  <style>
+    :root {
+      --primary-color: #ff7f7f;
+      /* 主色调 */
+      --secondary-color: #666;
+      /* 副色调 */
+    }
+
+    * {
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Microsoft YaHei', sans-serif;
+      line-height: 1.6;
+      background: #f9f9f9;
+    }
+
+    /* 时间轴容器 */
+    .timeline {
+      position: relative;
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    /* 时间轴线 */
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 4px;
+      background: var(--primary-color);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -2px;
+      border-radius: 2px;
+    }
+
+    /* 时间节点容器 */
+    .timeline-item {
+      padding: 20px 40px;
+      position: relative;
+      width: 50%;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: 1s all ease;
+    }
+
+    /* 显示动画 */
+    .timeline-item.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 左侧节点 */
+    .timeline-item.left {
+      left: 0;
+      text-align: right;
+    }
+
+    /* 右侧节点 */
+    .timeline-item.right {
+      left: 50%;
+    }
+
+    /* 内容框样式 */
+    .timeline-content {
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    /* 时间点标记 */
+    .timeline-content::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: var(--primary-color);
+      top: 25px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .timeline-item.left .timeline-content::after {
+      right: -30px;
+    }
+
+    .timeline-item.right .timeline-content::after {
+      left: -30px;
+    }
+
+    /* 日期样式 */
+    .date {
+      display: block;
+      font-size: 1.2em;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    /* 图片样式 */
+    .timeline-img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 8px;
+      margin: 15px 0;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .timeline::after {
+        left: 20px;
+      }
+
+      .timeline-item {
+        width: 100%;
+        padding-left: 50px;
+        padding-right: 0;
+      }
+
+      .timeline-item.left,
+      .timeline-item.right {
+        left: 0;
+        text-align: left;
+      }
+
+      .timeline-content::after {
+        left: -30px !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header style="text-align: center; padding: 80px 20px; background: var(--primary-color); color: white;">
+    <h1>江江&章章的恋爱之旅</h1>
+    <p>记录在一起的心动瞬间</p>
+  </header>
+
+  <div class="timeline">
+    <!-- 时间轴项示例 -->
+
+    <div class="timeline-item right">
+      <div class="timeline-content">
+        <h2>待续...</h2>
+      </div>
+    </div>
+
+    <div class="timeline-item left active">
+      <div class="timeline-content">
+        <span class="date">2025.02.16</span>
+        <h2>和你的第一个情人节</h2>
+        <p>今天收到你的花，像是收到了整个春天的浪漫。每一片花瓣都藏着你的心意，每一缕花香都诉说着你的温柔。原来，爱可以如此具体，像一束花，捧在手心，暖在心底。谢谢章章，让我在平凡的日子里，感受到不平凡的美好。</p>
+        <p>时间会证明，距离只是爱情的考验。我们虽然不在彼此身边，但每一天的等待，都是为了更好的重逢。我爱你，跨越山海，不问归期。</p>
+        <img
+          src="https://raw.githubusercontent.com/purplewe/public-static/refs/heads/main/%E6%83%85%E4%BA%BA%E8%8A%82.jpeg"
+          alt="相遇" class="timeline-img">
+      </div>
+    </div>
+    <div class="timeline-item left active">
+      <div class="timeline-content">
+        <span class="date">2024.12.14</span>
+        <h2>宣告喜欢你</h2>
+        <p>
+          我愿是风，轻轻拂过你的发梢；</br>
+          我愿是雨，悄悄落在你的肩头；</br>
+          我愿是光，静静照亮你的前路。</br>
+          而你，是我心中唯一的诗，字字句句，皆是温柔。</p>
+        <img src="https://raw.githubusercontent.com/purplewe/public-static/refs/heads/main/%E5%90%88%E7%85%A7.jpg"
+          alt="表白" class="timeline-img">
+      </div>
+    </div>
+    <div class="timeline-item left active">
+      <div class="timeline-content">
+        <span class="date">2024.10.19</span>
+        <h2>第一次看演唱会是和你</h2>
+        <p>
+          那晚下着小雨，演唱会的现场，灯光穿透雨幕，像是星星坠落在眼前。雨水打湿了发梢，却浇不灭我俩心中的热情。观众在雨中挥舞着手臂，像是与风雨共舞。那一刻，时间仿佛静止，只有音乐、雨水和心跳交织在一起。像一场梦境，短暂却永恒，湿漉漉的记忆，却温暖如初。
+        </p>
+        <img
+          src="https://raw.githubusercontent.com/purplewe/public-static/refs/heads/main/%E6%BC%94%E5%94%B1%E4%BC%9A.jpg"
+          alt="初次相见" class="timeline-img">
+      </div>
+    </div>
+
+    <div class="timeline-item right">
+      <div class="timeline-content">
+        <span class="date">2024.09.26</span>
+        <h2>旅程的起点</h2>
+        <img
+          src="https://raw.githubusercontent.com/purplewe/public-static/refs/heads/main/%E5%8A%A0%E5%BE%AE%E4%BF%A1%E7%9A%84%E6%97%B6%E9%97%B4.jpg"
+          alt="初次认识" class="timeline-img">
+      </div>
+    </div>
+
+    <!-- 更多时间节点... -->
+  </div>
+
+  <div style="position:fixed; top: 10px; right: 10px;">
+    <iframe frameborder="yes" border="0" marginwidth="0" marginheight="0" width=298 height=52
+      src="https://music.163.com/outchain/player?type=2&id=1349946492&auto=1&height=32"></iframe>
+  </div>
+
+
+  <script>
+    // 滚动动画控制
+    window.addEventListener('scroll', () => {
+      const items = document.querySelectorAll('.timeline-item');
+      const windowHeight = window.innerHeight;
+
+      items.forEach(item => {
+        const itemTop = item.getBoundingClientRect().top;
+        if (itemTop < windowHeight * 0.8) {
+          item.classList.add('active');
+        }
+      });
+    });
+
+    // 初始化第一个元素
+    document.querySelector('.timeline-item').classList.add('active');
+  </script>
+</body>
+
+</html>

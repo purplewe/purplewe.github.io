@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>
+        purplewe
+    </title>
+    <!-- TODO后续还是选用一个稳定的 -->
+    <link href="https://fonts.loli.net/css?family=Permanent+Marker|Roboto:500i|Lato:400" rel="stylesheet">
+    <link href='https://fonts.loli.net/css?family=Noto+Serif+SC:400' rel='stylesheet'>
+        
+<link rel="stylesheet" href="/css/style.css">
+
+        
+<link rel="stylesheet" href="/icon/iconfont.css">
+
+        
+<script src="/icon/iconfont.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+  <body>
+    <div class="header-wrapper">
+    <header class="header">
+        <div class="blog-title">
+            <a href="/" class="logo">
+                purplewe
+            </a>
+        </div>
+        <div class="site-nav">
+            <a href="#" class="menu-icon">
+                <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+            </a>
+            <div class="trigger">
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconhome1"></use>
+                    </svg>
+                    <a class="page-link" href="/" class="menu-item-link">
+                        Home
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconDog"></use>
+                    </svg>
+                    <a class="page-link" href="/about" class="menu-item-link">
+                        About
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconlove"></use>
+                    </svg>
+                    <a class="page-link" href="/love-journey" class="menu-item-link">
+                        Love Journey
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#iconGitHub"></use>
+                    </svg>
+                    <a class="page-link" target="_blank" rel="noopener" href="https://github.com/purplewe" class="menu-item-link">
+                        GitHub
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </header>
+</div>
+    <main class="main">
+      <article class="post">
+    <div class="post-title">
+        <h2 class="title">数据库备份策略</h2>
+    </div>
+    <div class="post-meta">
+        <span class="post-time">2019-12-19</span>
+    </div>
+    <div class="post-content">
+        <h1 id="数据备份"><a href="#数据备份" class="headerlink" title="数据备份"></a>数据备份</h1><h2 id="概念解释"><a href="#概念解释" class="headerlink" title="概念解释"></a>概念解释</h2><p>数据备份是为了尽可能快地全盘恢复运行计算机系统所需的数据和系统信息，是系统灾难恢复的前提之一。</p>
+<p>从备份模式的角度来说，分为<strong>物理备份</strong>和<strong>逻辑备份</strong></p>
+<ul>
+<li>物理备份：物理备份是磁盘块为基本单位将数据从主机复制到备机。</li>
+</ul>
+<p>冷备份：数据库关闭的情况下进行备份。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">以 mysql 为例，查看 my.cnf 中配置的 datadir，直接对该文件进行备份，适用于数据少的数据库，快速且安全。</span><br><span class="line">备份</span><br><span class="line">systemctl stop mysqld</span><br><span class="line">tar zcvf <span class="operator">/</span>backupPath<span class="operator">/</span>date.tar.gz <span class="operator">/</span>datadir<span class="operator">/</span></span><br><span class="line"></span><br><span class="line">还原</span><br><span class="line">tar zxvf <span class="operator">/</span>backupPath<span class="operator">/</span>date.tar.gz <span class="operator">-</span>C <span class="operator">/</span>datadir<span class="operator">/</span></span><br><span class="line">chown mysql:mysql <span class="operator">-</span>R <span class="operator">/</span>datadir<span class="operator">/</span></span><br><span class="line">systemctl <span class="keyword">start</span> mysqld</span><br><span class="line"></span><br><span class="line">也可以指定单个数据库进行备份</span><br></pre></td></tr></table></figure>
+
+<p>热备份：数据库处于正常运行的时候备份，可保证服务的可用性。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">mysqldump 多种备份方式</span><br><span class="line"></span><br><span class="line">全库备份</span><br><span class="line">mysqldump <span class="operator">-</span>uroot <span class="operator">-</span>pyourpasswd <span class="comment">--all-databases &gt; /backupPath/backup.sql</span></span><br><span class="line"></span><br><span class="line">指定库备份</span><br><span class="line">mysqldump <span class="operator">-</span>uroot <span class="operator">-</span>pyourpasswd <span class="comment">--databases databasename &gt; /backupPath/backup.sql</span></span><br><span class="line"></span><br><span class="line">指定库指定表</span><br><span class="line">mysqldump <span class="operator">-</span>uroot <span class="operator">-</span>pyourpasswd <span class="comment">--databases databasename tablename &gt; /backupPath/backup.sql</span></span><br><span class="line"></span><br><span class="line">跨服务器导库</span><br><span class="line">mysqldump <span class="comment">--host=ipA -uroot -pyourpasswd --databases databasename -C | mysql --host=ipB -uroot -pyourpasswd</span></span><br><span class="line"></span><br><span class="line">还原</span><br><span class="line"></span><br><span class="line">source <span class="operator">/</span>opt<span class="operator">/</span>linuxfan_it_neirong.sql</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>逻辑备份：逻辑备份是以文件为基本单位将数据从主机复制到备机。</li>
+</ul>
+<p>完全备份：将数据进行完整的备份。</p>
+<p>差异备份：备份自上次完全备份到现在发生改变的数据库内容。</p>
+<p>增量备份：备份至上次完全备份或增量备份后被修改的数据库内容。</p>
+<p>完全备份和差异备份<br>在星期一进行完全备份，在星期二至星期五进行差异备份。如果在星期五数据被破坏了，则你只需要还原星期一完全的备份和星期四的差异备份。这种策略备份数据需要较少的时间，但还原数据使用较少的时间。</p>
+<p>完全备份和增量备份<br>在星期一进行完全备份，在星期二至星期五进行增量备份。如果在星期五数据被破坏了，则你需要还原星期一正常的备份和从星期二至星期五的所有增量备份。这种策略备份数据需要较少的时间，但还原数据使用较多的时间。</p>
+<h2 id="各种备份方式的适用场景"><a href="#各种备份方式的适用场景" class="headerlink" title="各种备份方式的适用场景"></a>各种备份方式的适用场景</h2><h2 id="oracle-最简单的备份（导入、导出）"><a href="#oracle-最简单的备份（导入、导出）" class="headerlink" title="oracle 最简单的备份（导入、导出）"></a>oracle 最简单的备份（导入、导出）</h2><p>su -oracle</p>
+<p>sqlplus</p>
+<p>conn / as sysdba</p>
+<p>导出并删除原数据</p>
+<p>exp username/password@databases_ip:1521/orcl file=/path/filename.dmp</p>
+<p>drop tablespace tablespace_name including contents and datafiles CASCADE CONSTRAINTS;</p>
+<p>如果有进程占用当前库，那么删除不了。</p>
+<p>创建表空间用户并导入数据</p>
+<p>create tablespace xxxDATA datafile ‘/home/oracle/app/oracle/oradata/orcl/xxxDATA.dbf’ size 512m autoextend on next 50m maxsize 2048m extent management local;<br>–创建用户<br>drop user xxxDATA cascade;<br>create user xxxDATA identified by password default tablespace xxxDATA;<br>–授权<br>grant all privileges to xxxDATA;<br>grant connect to xxxDATA;<br>grant dba to xxxDATA;<br>– Grant/Revoke object privileges<br>grant execute, read on directory dpdata to xxxDATA with grant option;<br>grant connect to xxxDATA with admin option;<br>grant dba to xxxDATA with admin option;<br>grant exp_full_database to xxxDATA with admin option;<br>grant imp_full_database to xxxDATA with admin option;<br>grant gather_system_statistics to xxxDATA with admin option;</p>
+<p>imp username/password  file=/path/filename.dmp ignore=y fromuser=XXX touser=XXX</p>
+<p>数据库全库备份</p>
+<p>数据库单个库备份</p>
+<h2 id="发现的问题"><a href="#发现的问题" class="headerlink" title="发现的问题"></a>发现的问题</h2><p>数据备份不全面，凡是具有价值的数据都应备份。</p>
+<p>通过备份服务器创建定时任务，触发需备份的服务器内的备份脚本，然后将需要备份的数据 scp 发送过来，这种方式值得借鉴，但是里面有几点可以改进的地方。第一，定时任务不要放在一个脚本中执行，最好分类执行多个脚本；第二，备份时的日志需要按照格式做好记录；第三，如果考虑到备份数据库的容量问题，我们可以只保留一定时间内的数据；第四，针对所备份的数据量大小，应该采取不同的备份策略，以达到备份和恢复的高效。</p>
+
+    </div>
+</article>
+    </main>
+  </body>
+</html>
