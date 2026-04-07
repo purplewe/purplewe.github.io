@@ -5,3 +5,5 @@ Thumbs.db
 *.class
 node_modules/
 public/
+.claude/
+.deploy_git/
